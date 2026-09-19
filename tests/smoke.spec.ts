@@ -52,7 +52,7 @@ test.describe('Portfolio Smoke Tests', () => {
     
     // Go back to home, it should redirect or show standard view 
     // (Actually our standard view is a separate route, and we set localStorage so that if someone visits '/' they get redirected, but in our implementation we haven't added the redirect script to / page yet. Wait, we added a script to layout.tsx that sets `data-view="standard"` on HTML tag, but we don't auto-redirect. Let's just check the button toggles back to normal view.)
-    await page.getByRole('button', { name: /Forged View/i }).click();
+    await page.getByRole('button', { name: /Interactive View/i }).click();
     await expect(page).toHaveURL(/.*\/$/);
   });
 
