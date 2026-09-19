@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FORGED: Subhojeet Chanda Portfolio
+
+A memorable, fast, accessible personal portfolio for Subhojeet Chanda.
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- Node.js 18+
 
+### Run Locally
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+Open [http://localhost:3000](http://localhost:3000)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Testing
+- **Unit Tests**: `npm run test` (Vitest)
+- **Smoke Tests**: `npx playwright test` (Playwright)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Build & Deploy
+This project is built on Next.js 15 (App Router). To deploy to Vercel:
+1. Push to a GitHub repository.
+2. Import the project in Vercel.
+3. Vercel will automatically detect Next.js and build it.
+4. No specific environment variables are required out of the box, unless adding external analytics tracking IDs.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Editing Content
+All content is strictly separated from the UI logic.
+Open `src/content/profile.ts` to modify:
+- **About/Hero**: Name, headline, summary, email, phone.
+- **Links**: LinkedIn, GitHub, Resume URL.
+- **Experience**: The Furnace section timeline.
+- **Projects**: The Rolling Mill section case studies.
+- **Skills**: Raw Material skill groups.
+- **Achievements**: Quality Lab test certificates.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Control Room Attributes (Scoring)
+Projects are dynamically ranked in the Control Room. In `profile.ts`, each project has an `attributes` object with values from 0-10:
+```ts
+attributes: {
+  ml: 8,       // Machine Learning depth
+  engineering: 9, // Engineering complexity
+  research: 5,    // Research & papers
+  impact: 8,      // Real-world impact
+  scale: 7        // Scale of deployment
+}
+```
+Adjusting these values will automatically change how the project ranks when a recruiter moves the sliders in the Control Room. The math is a simple weighted average.
