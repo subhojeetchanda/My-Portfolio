@@ -6,6 +6,10 @@ import ProjectSection from '@/components/interactive/ProjectSection';
 import HeatLine from '@/components/interactive/HeatLine';
 import EasterEggHero from '@/components/interactive/EasterEggHero';
 import StageBadge from '@/components/interactive/StageBadge';
+import { FadeIn, SlideInLeft, StampBadge, TimelineDot, FadeInRow } from '@/components/interactive/Animations';
+import PointerSheen from '@/components/interactive/PointerSheen';
+import MetricText from '@/components/interactive/MetricText';
+import TelemetryStrip from '@/components/interactive/TelemetryStrip';
 import dynamic from 'next/dynamic';
 
 const HeroEmbers = dynamic(() => import('@/components/interactive/HeroEmbers'));
@@ -22,27 +26,42 @@ export default function Home() {
           <HeroEmbers />
           <EasterEggHero />
           
-          <h1 className="font-display text-6xl md:text-8xl font-bold uppercase mb-6 text-paper leading-none tracking-tight">
-            {profile.name}
-          </h1>
-          <h2 className="font-mono text-xl md:text-2xl text-molten mb-6 max-w-3xl">
-            {profile.about.headline}
-          </h2>
-          <p className="font-sans text-steel-light max-w-2xl text-lg mb-10 leading-relaxed">
-            {profile.about.summary}
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Link href="#rolling-mill" className="bg-molten text-ink font-mono px-6 py-3 font-bold hover:bg-ember transition-colors">
-              VIEW PROJECTS
-            </Link>
-            <Link href="#dispatch" className="border border-steel text-paper font-mono px-6 py-3 hover:border-steel-light transition-colors">
-              CONTACT
-            </Link>
-          </div>
+          <FadeIn delay={0.1}>
+            <h1 className="font-display text-6xl md:text-8xl font-bold uppercase mb-6 text-paper leading-none tracking-tight">
+              {profile.name}
+            </h1>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <h2 className="font-mono text-xl md:text-2xl text-molten mb-6 max-w-3xl">
+              {profile.about.headline}
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.3}>
+            <p className="font-sans text-steel-light max-w-2xl text-lg mb-10 leading-relaxed">
+              {profile.about.summary}
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.4}>
+            <div className="flex flex-wrap gap-4">
+              <PointerSheen className="inline-block transition-transform duration-300 hover:scale-105">
+                <Link href="#rolling-mill" className="bg-molten text-ink font-mono px-6 py-3 font-bold hover:bg-ember transition-colors block h-full w-full">
+                  VIEW PROJECTS
+                </Link>
+              </PointerSheen>
+              <PointerSheen className="inline-block transition-transform duration-300 hover:-translate-y-1">
+                <Link href="#dispatch" className="border border-steel text-paper font-mono px-6 py-3 hover:border-steel-light hover:bg-steel/10 transition-colors block h-full w-full">
+                  CONTACT
+                </Link>
+              </PointerSheen>
+            </div>
+          </FadeIn>
         </section>
+        
+        {/* TELEMETRY STRIP */}
+        <TelemetryStrip />
 
         {/* STAGE 1: RAW MATERIAL */}
-        <section id="raw-material" className="py-24 border-t border-steel relative">
+        <section id="raw-material" className="py-24 border-t border-steel relative mt-12">
           <StageBadge text="01 RAW MATERIAL" />
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mt-8">
@@ -50,27 +69,31 @@ export default function Home() {
               <h3 className="font-display text-3xl font-bold uppercase mb-8 text-paper">Skills Inventory</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {profile.skills.map((group, i) => (
-                  <div key={i} className="border border-steel p-6 bg-steel/10">
-                    <h4 className="font-mono text-xs text-steel-light uppercase mb-3 border-b border-steel pb-2">{group.category}</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {group.skills.map((skill, j) => (
-                        <span key={j} className="font-sans text-sm text-paper bg-ink border border-steel px-2 py-1">{skill}</span>
-                      ))}
+                  <FadeIn key={i} delay={i * 0.1}>
+                    <div className="border border-steel p-6 bg-steel/10 transition-all duration-300 hover:-translate-y-1 hover:border-steel-light hover:shadow-[0_0_15px_rgba(255,87,34,0.15)] h-full">
+                      <h4 className="font-mono text-xs text-steel-light uppercase mb-3 border-b border-steel pb-2">{group.category}</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {group.skills.map((skill, j) => (
+                          <span key={j} className="font-sans text-sm text-paper bg-ink border border-steel px-2 py-1">{skill}</span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  </FadeIn>
                 ))}
               </div>
             </div>
             
             <div>
-              <h3 className="font-display text-3xl font-bold uppercase mb-8 text-paper">Education Base</h3>
-              <div className="border border-steel p-6 bg-steel/10 flex flex-col h-full">
-                <h4 className="font-sans font-bold text-lg text-paper mb-2">{profile.education.degree}</h4>
-                <p className="font-mono text-sm text-steel-light mb-auto">{profile.education.institution}</p>
-                <div className="mt-6 pt-4 border-t border-steel font-mono text-sm text-molten">
-                  {profile.education.startDate} – {profile.education.endDate}
+              <FadeIn delay={0.4}>
+                <h3 className="font-display text-3xl font-bold uppercase mb-8 text-paper">Education Base</h3>
+                <div className="border border-steel p-6 bg-steel/10 flex flex-col h-full transition-all duration-300 hover:-translate-y-1 hover:border-steel-light hover:shadow-[0_0_15px_rgba(255,87,34,0.15)]">
+                  <h4 className="font-sans font-bold text-lg text-paper mb-2">{profile.education.degree}</h4>
+                  <p className="font-mono text-sm text-steel-light mb-auto">{profile.education.institution}</p>
+                  <div className="mt-6 pt-4 border-t border-steel font-mono text-sm text-molten">
+                    {profile.education.startDate} – {profile.education.endDate}
+                  </div>
                 </div>
-              </div>
+              </FadeIn>
             </div>
           </div>
         </section>
@@ -83,23 +106,23 @@ export default function Home() {
           
           <div className="relative border-l border-steel ml-4 md:ml-6 pl-8 md:pl-12 flex flex-col gap-16">
             {[...profile.experience, ...profile.leadership].map((item, i) => (
-              <div key={i} className="relative">
+              <SlideInLeft key={i} delay={i * 0.1} className="relative group">
                 {/* Timeline dot */}
-                <div className="absolute -left-[41px] md:-left-[57px] top-1 w-4 h-4 bg-molten outline outline-4 outline-ink"></div>
+                <TimelineDot className="absolute -left-[41px] md:-left-[57px] top-1 w-4 h-4 outline outline-4 outline-ink transition-colors duration-500" />
                 
                 <div className="flex flex-col md:flex-row md:items-baseline gap-2 md:gap-4 mb-2">
-                  <h4 className="font-sans font-bold text-xl text-paper">{item.role}</h4>
+                  <h4 className="font-sans font-bold text-xl text-paper group-hover:text-molten transition-colors duration-300">{item.role}</h4>
                   <span className="font-mono text-sm text-molten">{item.startDate} – {item.endDate}</span>
                 </div>
                 <p className="font-mono text-sm text-steel-light mb-4">{item.company} | {item.location}</p>
                 <ul className="flex flex-col gap-3">
                   {item.bulletPoints.map((bp, j) => (
-                    <li key={j} className="font-sans text-paper/90 leading-relaxed relative pl-4 before:content-[''] before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-steel-light">
-                      {bp}
+                    <li key={j} className="font-sans text-paper/90 leading-relaxed relative pl-4 before:content-[''] before:absolute before:left-0 before:top-2 before:w-1.5 before:h-1.5 before:bg-steel-light group-hover:before:bg-molten before:transition-colors before:duration-300">
+                      <MetricText>{bp}</MetricText>
                     </li>
                   ))}
                 </ul>
-              </div>
+              </SlideInLeft>
             ))}
           </div>
         </section>
@@ -130,11 +153,11 @@ export default function Home() {
               </thead>
               <tbody className="font-sans text-sm">
                 {profile.achievements.map((ach, i) => (
-                  <tr key={i} className="border-b border-steel last:border-0 hover:bg-steel/5 transition-colors">
+                  <FadeInRow key={i} delay={i * 0.05} className="border-b border-steel last:border-0 hover:bg-steel/5 transition-colors group">
                     <td className="p-4 font-medium text-paper">{ach.title}</td>
                     <td className="p-4 text-steel-light">{ach.issuer}</td>
                     <td className="p-4 text-right">
-                      <span className="font-mono text-xs px-2 py-1 bg-ink border border-steel text-paper">
+                      <span className="font-mono text-xs px-2 py-1 bg-ink border border-steel text-paper transition-colors group-hover:bg-steel/20 group-hover:border-steel-light">
                         {ach.status}
                       </span>
                     </td>
@@ -145,7 +168,7 @@ export default function Home() {
                         <span className="text-steel-light">N/A</span>
                       )}
                     </td>
-                  </tr>
+                  </FadeInRow>
                 ))}
               </tbody>
             </table>
@@ -158,10 +181,10 @@ export default function Home() {
           
           <h3 className="font-display text-3xl font-bold uppercase mb-8 text-paper mt-8">Consignment Slip</h3>
           
-          <div className="max-w-xl bg-paper text-ink p-8 border-4 border-double border-ink relative">
-            <div className="absolute top-4 right-4 border-2 border-ink p-1 rotate-12">
-              <span className="font-display text-2xl font-bold text-molten border-2 border-molten px-2 py-0.5">READY</span>
-            </div>
+          <FadeIn delay={0.2} className="max-w-xl bg-paper text-ink p-8 border-4 border-double border-ink relative">
+            <StampBadge className="absolute top-4 right-4 border-2 border-ink p-1 rotate-12 bg-paper z-10">
+              <span className="font-display text-2xl font-bold text-molten border-2 border-molten px-2 py-0.5 shadow-sm">READY</span>
+            </StampBadge>
             
             <h4 className="font-mono font-bold text-xl mb-6 uppercase border-b-2 border-ink pb-2">Dest: Network</h4>
             
@@ -193,7 +216,7 @@ export default function Home() {
                 </a>
               </div>
             </div>
-          </div>
+          </FadeIn>
         </section>
 
       </div>

@@ -47,3 +47,13 @@ attributes: {
 }
 ```
 Adjusting these values will automatically change how the project ranks when a recruiter moves the sliders in the Control Room. The math is a simple weighted average.
+
+## Signature Features
+The site includes several advanced interactive features designed for a premium feel:
+- **Command Palette (`Ctrl+K`)**: Quickly jump between sections, copy email, or toggle views. Implemented in `src/components/interactive/CommandPalette.tsx`.
+- **Theme Toggle**: Switch between Day Shift (light mode) and Night Shift (dark mode). State is preserved in localStorage and prevents hydration flashes.
+- **Pointer Sheen**: A radial CSS gradient that follows the mouse cursor over CTA buttons and project cards (disabled on touch devices).
+- **Odometer Numerals**: Numbers in the content with a `%` or `+` suffix automatically animate upward when scrolling into view.
+- **Telemetry Strip**: A SCADA-style scrolling ticker below the hero section displaying real metrics parsed from the resume.
+
+*Note: All animations and advanced effects are built to strictly respect OS-level `prefers-reduced-motion` preferences.*

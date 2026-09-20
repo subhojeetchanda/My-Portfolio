@@ -74,9 +74,9 @@ export const profile: ProfileData = {
     hiddenByDefault: true
   },
   links: {
-    linkedin: "TODO",
-    github: "TODO",
-    leetcode: "TODO"
+    linkedin: "https://linkedin.com/in/subhojeet-chanda",
+    github: "https://github.com/subhojeetchanda",
+    leetcode: "https://leetcode.com/u/subhojeetchanda18/"
   },
   about: {
     headline: "Forged in Bokaro. Built to hold up in the real world.",
@@ -127,7 +127,7 @@ export const profile: ProfileData = {
       slug: "text-sensor-fusion",
       title: "Confidence-Weighted Text-Sensor Fusion for Urban Routing",
       stack: ["Python", "XGBoost", "FastAPI"],
-      links: { github: "TODO", live: "TODO" },
+      links: { github: "https://github.com/subhojeetchanda/Confidence-Weighted-Text-Sensor-Fusion-for-Urban-Routing", live: "https://confidence-weighted-text-sensor-fusion-for-urban-production.up.railway.app/" },
       bulletPoints: [
         "Engineered a confidence-weighted multimodal fusion framework in Python, XGBoost, and FastAPI, upweighting text-based hazard signals (municipal advisories, news) over sensor data in proportion to their disagreement with sensor trends.",
         "Designed a dose-based exposure model (concentration × time × activity-adjusted breathing rate) to rank candidate routes by estimated inhaled PM2.5 exposure instead of coarse AQI category.",
@@ -146,7 +146,7 @@ export const profile: ProfileData = {
       slug: "carelink",
       title: "CareLink: AI Diagnostic Assistant",
       stack: ["Next.js", "Node.js", "TensorFlow", "Firebase", "Socket.io"],
-      links: { github: "TODO", live: "TODO" },
+      links: { github: "https://github.com/subhojeetchanda/CareLink", live: "https://care-link-jade.vercel.app/" },
       bulletPoints: [
         "Built a dual-interface AI-assisted radiology platform with Next.js, Node.js, TensorFlow, and Firebase, powered by a DenseNet121 CNN with Grad-CAM for explainable X-ray classification at 91% accuracy.",
         "Combined Tesseract OCR with a FAISS-indexed RAG pipeline over MedlinePlus to translate medical jargon into plain language for patients.",
@@ -165,7 +165,7 @@ export const profile: ProfileData = {
       slug: "safesphere",
       title: "SafeSphere",
       stack: ["Next.js", "Node.js", "Express", "TypeScript", "Hyperledger", "XGBoost"],
-      links: { github: "TODO", live: "TODO" },
+      links: { github: "https://github.com/subhojeetchanda/Smart_Tourist_Safety_System", live: "https://safesphere-dashboard.vercel.app" },
       bulletPoints: [
         "Spearheaded a smart tourist safety platform using Next.js, Node.js, Express.js, TypeScript, and XGBoost, cutting incident response time by 30% through anomaly detection and geo-fencing.",
         "Deployed blockchain-backed digital tourist IDs and real-time risk-zone alerts on Hyperledger for tamper-resistant records.",
@@ -230,13 +230,13 @@ export const profile: ProfileData = {
     {
       title: "Data Structures and Algorithms with Java",
       status: "CERTIFIED",
-      link: "TODO",
+      link: "https://drive.google.com/file/d/1-iQzYZ9D6peJmLGoX71VYBBsoAYxaYMV/view?usp=sharing",
       issuer: "Certificate of Completion"
     },
     {
       title: "The Full Stack Web Development Bootcamp",
       status: "CERTIFIED",
-      link: "TODO",
+      link: "https://www.udemy.com/certificate/UC-ed1b5942-e0b8-4510-a79c-8589806ab18f/?utm_campaign=email&utm_medium=email&utm_source=sendgrid.com",
       issuer: "Udemy"
     }
   ]

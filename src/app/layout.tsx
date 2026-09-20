@@ -3,6 +3,7 @@ import { Barlow_Condensed, IBM_Plex_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { profile } from "@/content/profile";
 import Header from "@/components/layout/Header";
+import MotionProvider from "@/components/layout/MotionProvider";
 import { Analytics } from "@vercel/analytics/react";
 
 const barlowCondensed = Barlow_Condensed({
@@ -72,8 +73,14 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               try {
+                // Standard view check
                 if (localStorage.getItem('standardView') === 'true') {
                   document.documentElement.setAttribute('data-view', 'standard');
+                }
+                // Theme check
+                const theme = localStorage.getItem('theme');
+                if (theme === 'light' || (!theme && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+                  document.documentElement.classList.add('light');
                 }
               } catch (e) {}
             `,
@@ -85,7 +92,9 @@ export default function RootLayout({
         <a href="/standard" className="skip-link" style={{ top: '-40px', left: '160px' }}>Skip to standard view</a>
         <Header />
         <main id="main-content" className="flex-grow">
-          {children}
+          <MotionProvider>
+            {children}
+          </MotionProvider>
         </main>
         <script
           type="application/ld+json"

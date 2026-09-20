@@ -7,6 +7,8 @@ import { Weights, rankProjects } from '@/lib/score';
 import Link from 'next/link';
 import { ChevronDown, ChevronUp, RotateCcw } from 'lucide-react';
 import { track } from '@vercel/analytics';
+import PointerSheen from './PointerSheen';
+import MetricText from './MetricText';
 
 const INITIAL_WEIGHTS: Weights = {
   ml: 0,
@@ -156,21 +158,21 @@ export default function ProjectSection({ projects }: { projects: Project[] }) {
       {/* PROJECT LIST */}
       <div className="flex flex-col gap-12">
         {rankedProjects.map(({ project, totalScore, contributions }, i) => (
-          <motion.div
-            key={project.id}
-            layout
-            initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
-            whileInView={{ opacity: 1, clipPath: 'inset(0 0% 0 0)' }}
-            viewport={{ once: true, margin: '-50px' }}
-            transition={{ 
-              type: 'tween', 
-              ease: 'easeOut',
-              duration: 0.5
-            }}
-            className="border border-steel bg-steel/5 relative overflow-hidden group"
-          >
-            <div className="absolute top-0 left-0 w-2 h-full bg-molten"></div>
-            <div className="p-6 md:p-8 pl-8 md:pl-10 flex flex-col lg:flex-row gap-8">
+          <PointerSheen key={project.id} className="border border-steel bg-steel/5 relative group">
+            <motion.div
+              layout
+              initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
+              whileInView={{ opacity: 1, clipPath: 'inset(0 0% 0 0)' }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ 
+                type: 'tween', 
+                ease: 'easeOut',
+                duration: 0.5
+              }}
+              className="relative overflow-hidden w-full h-full"
+            >
+              <div className="absolute top-0 left-0 w-2 h-full bg-molten"></div>
+              <div className="p-6 md:p-8 pl-8 md:pl-10 flex flex-col lg:flex-row gap-8">
               
               <div className="flex-1 flex flex-col">
                 <div className="flex justify-between items-start mb-4">
@@ -223,7 +225,9 @@ export default function ProjectSection({ projects }: { projects: Project[] }) {
 
                 <ul className="flex flex-col gap-2 mb-6 mt-auto">
                   {project.bulletPoints.map((bp, j) => (
-                    <li key={j} className="font-sans text-paper/90 leading-relaxed text-sm">{bp}</li>
+                    <li key={j} className="font-sans text-paper/90 leading-relaxed text-sm">
+                      <MetricText>{bp}</MetricText>
+                    </li>
                   ))}
                 </ul>
                 <Link 
@@ -263,6 +267,7 @@ export default function ProjectSection({ projects }: { projects: Project[] }) {
               </div>
             </div>
           </motion.div>
+          </PointerSheen>
         ))}
       </div>
     </div>
