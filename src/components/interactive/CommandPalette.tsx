@@ -116,6 +116,16 @@ export default function CommandPalette({ isOpen, onClose }: { isOpen: boolean; o
         onClose();
       }
     },
+    {
+      id: 'replay-intro',
+      title: 'Replay Signature Intro',
+      description: 'Run the molten name pour animation again',
+      icon: <FileText size={16} />,
+      onSelect: () => {
+        localStorage.removeItem('forged:intro:v1');
+        window.location.reload();
+      }
+    },
     ...profile.projects.map(p => ({
       id: `project-${p.slug}`,
       title: `View Project: ${p.title}`,

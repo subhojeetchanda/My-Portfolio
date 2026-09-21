@@ -10,9 +10,14 @@ import { FadeIn, SlideInLeft, StampBadge, TimelineDot, FadeInRow } from '@/compo
 import PointerSheen from '@/components/interactive/PointerSheen';
 import MetricText from '@/components/interactive/MetricText';
 import TelemetryStrip from '@/components/interactive/TelemetryStrip';
+import ProductionLedger from '@/components/interactive/ledger/ProductionLedger';
+import ConsignmentForm from '@/components/interactive/dispatch/ConsignmentForm';
+import PlantShiftClock from '@/components/interactive/dispatch/PlantShiftClock';
+import ReplayIntroButton from '@/components/interactive/ReplayIntroButton';
 import dynamic from 'next/dynamic';
 
 const HeroEmbers = dynamic(() => import('@/components/interactive/HeroEmbers'));
+const HeroNamePour = dynamic(() => import('@/components/interactive/HeroNamePour'), { ssr: true });
 
 export default function Home() {
   return (
@@ -27,9 +32,7 @@ export default function Home() {
           <EasterEggHero />
           
           <FadeIn delay={0.1}>
-            <h1 className="font-display text-6xl md:text-8xl font-bold uppercase mb-6 text-paper leading-none tracking-tight">
-              {profile.name}
-            </h1>
+            <HeroNamePour name={profile.name} />
           </FadeIn>
           <FadeIn delay={0.2}>
             <h2 className="font-mono text-xl md:text-2xl text-molten mb-6 max-w-3xl">
@@ -135,6 +138,9 @@ export default function Home() {
 
           <ProjectSection projects={profile.projects} />
         </section>
+        
+        {/* STAGE 3B: PRODUCTION LEDGER */}
+        <ProductionLedger />
 
         {/* STAGE 4: QUALITY LAB */}
         <section id="quality-lab" className="py-24 border-t border-steel relative">
@@ -179,47 +185,97 @@ export default function Home() {
         <section id="dispatch" className="py-24 border-t border-steel relative">
           <StageBadge text="05 DISPATCH" />
           
-          <h3 className="font-display text-3xl font-bold uppercase mb-8 text-paper mt-8">Consignment Slip</h3>
-          
-          <FadeIn delay={0.2} className="max-w-xl bg-paper text-ink p-8 border-4 border-double border-ink relative">
-            <StampBadge className="absolute top-4 right-4 border-2 border-ink p-1 rotate-12 bg-paper z-10">
-              <span className="font-display text-2xl font-bold text-molten border-2 border-molten px-2 py-0.5 shadow-sm">READY</span>
-            </StampBadge>
+          <div className="mt-8 flex flex-col lg:flex-row gap-12">
             
-            <h4 className="font-mono font-bold text-xl mb-6 uppercase border-b-2 border-ink pb-2">Dest: Network</h4>
-            
-            <div className="flex flex-col gap-4 font-mono text-sm">
-              <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-ink/20 pb-2">
-                <span className="uppercase text-ink/70 font-bold">Email</span>
-                <CopyEmail email={profile.email} />
-              </div>
-              <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-ink/20 pb-2">
-                <span className="uppercase text-ink/70 font-bold">Phone</span>
-                <PhoneReveal phone={profile.phone.number} />
-              </div>
-              <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-ink/20 pb-2">
-                <span className="uppercase text-ink/70 font-bold">LinkedIn</span>
-                <a href={profile.links.linkedin !== 'TODO' ? profile.links.linkedin : '#'} className="hover:underline">{profile.links.linkedin === 'TODO' ? 'TODO' : 'Profile'}</a>
-              </div>
-              <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-ink/20 pb-2">
-                <span className="uppercase text-ink/70 font-bold">GitHub</span>
-                <a href={profile.links.github !== 'TODO' ? profile.links.github : '#'} className="hover:underline">{profile.links.github === 'TODO' ? 'TODO' : 'Profile'}</a>
-              </div>
-              <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-ink/20 pb-2">
-                <span className="uppercase text-ink/70 font-bold">LeetCode</span>
-                <a href={profile.links.leetcode !== 'TODO' ? profile.links.leetcode : '#'} className="hover:underline">{profile.links.leetcode === 'TODO' ? 'TODO' : 'Profile'}</a>
-              </div>
-              <div className="flex flex-col md:flex-row md:items-center justify-between pt-4">
-                <span className="uppercase text-ink/70 font-bold">Documentation</span>
-                <a href="/Subhojeet_Chanda_Resume.pdf" target="_blank" className="bg-ink text-paper px-4 py-2 hover:bg-steel transition-colors font-bold text-center mt-2 md:mt-0">
-                  DOWNLOAD RESUME
-                </a>
-              </div>
+            <div className="flex-1 max-w-2xl">
+              <ConsignmentForm />
             </div>
-          </FadeIn>
+            
+            <div className="flex-1 flex flex-col gap-8">
+              <div className="bg-steel/5 p-6 border border-steel/50">
+                <PlantShiftClock />
+                
+                {(profile.contactInfo?.openTo || profile.contactInfo?.basedIn) && (
+                  <div className="mt-6 flex flex-col gap-3 font-mono text-sm border-t border-steel/30 pt-6">
+                    {profile.contactInfo.openTo && (
+                      <div className="flex flex-col">
+                        <span className="text-[10px] text-steel-light uppercase tracking-widest">Open To</span>
+                        <span className="text-paper">{profile.contactInfo.openTo}</span>
+                      </div>
+                    )}
+                    {profile.contactInfo.basedIn && (
+                      <div className="flex flex-col">
+                        <span className="text-[10px] text-steel-light uppercase tracking-widest">Based In</span>
+                        <span className="text-paper">{profile.contactInfo.basedIn}</span>
+                      </div>
+                    )}
+                    {profile.contactInfo.typicalReplyTime && (
+                      <div className="flex flex-col">
+                        <span className="text-[10px] text-steel-light uppercase tracking-widest">Typical Reply Time</span>
+                        <span className="text-paper">{profile.contactInfo.typicalReplyTime}</span>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+              
+              <div>
+                <h4 className="font-mono font-bold text-sm mb-4 uppercase border-b border-steel pb-2 text-paper">Alternate Routes</h4>
+                <div className="flex flex-col gap-3 font-mono text-sm">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-steel/20 pb-2">
+                    <span className="uppercase text-steel-light">Email</span>
+                    <CopyEmail email={profile.email} />
+                  </div>
+                  {profile.phone && !profile.phone.hiddenByDefault && (
+                    <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-steel/20 pb-2">
+                      <span className="uppercase text-steel-light">Phone</span>
+                      <PhoneReveal phone={profile.phone.number} />
+                    </div>
+                  )}
+                  {profile.links.linkedin && (
+                    <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-steel/20 pb-2">
+                      <span className="uppercase text-steel-light">LinkedIn</span>
+                      {profile.links.linkedin === 'TODO' ? (
+                        <span className="text-steel/50 cursor-not-allowed text-xs">[OFFLINE]</span>
+                      ) : (
+                        <a href={profile.links.linkedin} className="text-paper hover:underline hover:text-molten transition-colors">Profile</a>
+                      )}
+                    </div>
+                  )}
+                  {profile.links.github && (
+                    <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-steel/20 pb-2">
+                      <span className="uppercase text-steel-light">GitHub</span>
+                      {profile.links.github === 'TODO' ? (
+                        <span className="text-steel/50 cursor-not-allowed text-xs">[OFFLINE]</span>
+                      ) : (
+                        <a href={profile.links.github} className="text-paper hover:underline hover:text-molten transition-colors">Profile</a>
+                      )}
+                    </div>
+                  )}
+                  {profile.links.leetcode && (
+                    <div className="flex flex-col md:flex-row md:items-center justify-between border-b border-steel/20 pb-2">
+                      <span className="uppercase text-steel-light">LeetCode</span>
+                      {profile.links.leetcode === 'TODO' ? (
+                        <span className="text-steel/50 cursor-not-allowed text-xs">[OFFLINE]</span>
+                      ) : (
+                        <a href={profile.links.leetcode} className="text-paper hover:underline hover:text-molten transition-colors">Profile</a>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </div>
+              
+            </div>
+            
+          </div>
         </section>
 
       </div>
+
+      {/* Global Footer */}
+      <footer className="w-full border-t border-steel/30 py-6 mt-12 flex justify-center col-span-full absolute bottom-0 left-0">
+        <ReplayIntroButton />
+      </footer>
     </div>
   );
 }

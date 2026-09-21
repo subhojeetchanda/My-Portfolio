@@ -4,15 +4,16 @@ import { useState } from 'react';
 import { Copy, Check } from 'lucide-react';
 
 interface CopyEmailProps {
-  email: string;
+  email?: string;
+  className?: string;
 }
 
-export default function CopyEmail({ email }: CopyEmailProps) {
+export default function CopyEmail({ email, className = '' }: CopyEmailProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
     try {
-      await navigator.clipboard.writeText(email);
+      await navigator.clipboard.writeText(email!);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
@@ -21,7 +22,7 @@ export default function CopyEmail({ email }: CopyEmailProps) {
   };
 
   return (
-    <div className="flex items-center gap-2">
+    <div className={`flex items-center gap-2 ${className}`}>
       <a href={`mailto:${email}`} className="text-molten hover:underline font-mono">
         {email}
       </a>

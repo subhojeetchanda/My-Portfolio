@@ -67,7 +67,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${barlowCondensed.variable} ${ibmPlexMono.variable} ${inter.variable}`}>
+    <html lang="en" className={`${barlowCondensed.variable} ${ibmPlexMono.variable} ${inter.variable}`} suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -81,6 +81,10 @@ export default function RootLayout({
                 const theme = localStorage.getItem('theme');
                 if (theme === 'light' || (!theme && window.matchMedia('(prefers-color-scheme: light)').matches)) {
                   document.documentElement.classList.add('light');
+                }
+                // Intro animation check
+                if (!localStorage.getItem('forged:intro:v1') && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                  document.documentElement.setAttribute('data-intro', 'play');
                 }
               } catch (e) {}
             `,

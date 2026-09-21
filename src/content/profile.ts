@@ -64,6 +64,11 @@ export type ProfileData = {
     endDate: string;
   };
   achievements: Achievement[];
+  contactInfo?: {
+    openTo?: string;
+    basedIn?: string;
+    typicalReplyTime?: string;
+  };
 };
 
 export const profile: ProfileData = {
@@ -219,8 +224,8 @@ export const profile: ProfileData = {
   achievements: [
     {
       title: "Smart India Hackathon (SIH) 2025",
-      status: "WAITLIST",
-      issuer: "National Finalist"
+      status: "National Finalist (Waitlist)",
+      issuer: "Ministry of Education"
     },
     {
       title: "VIT Bhopal Health Hackathon",
