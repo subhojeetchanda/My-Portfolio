@@ -128,7 +128,7 @@ export default function ConsignmentForm() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="flex flex-col gap-2">
             <label htmlFor={`${formId}-name`} className="font-mono text-[10px] text-steel-light uppercase tracking-widest">
-              From (Name) *
+              From (Name)
             </label>
             <input 
               required
@@ -144,7 +144,7 @@ export default function ConsignmentForm() {
           
           <div className="flex flex-col gap-2">
             <label htmlFor={`${formId}-email`} className="font-mono text-[10px] text-steel-light uppercase tracking-widest">
-              Reply-To (Email) *
+              Reply-To (Email)
             </label>
             <input 
               required
@@ -162,7 +162,7 @@ export default function ConsignmentForm() {
         {/* Consignment Type */}
         <div className="flex flex-col gap-3 mt-2">
           <label className="font-mono text-[10px] text-steel-light uppercase tracking-widest">
-            Consignment Type *
+            Consignment Type
           </label>
           <div className="flex flex-wrap gap-3">
             {['Internship', 'Full-time role', 'Collaboration', 'Just saying hi'].map((type, i) => (
@@ -188,7 +188,7 @@ export default function ConsignmentForm() {
         <div className="flex flex-col gap-2 mt-2 relative">
           <div className="flex justify-between items-end">
             <label htmlFor={`${formId}-msg`} className="font-mono text-[10px] text-steel-light uppercase tracking-widest">
-              Contents (Message) *
+              Contents (Message)
             </label>
             <span className={`font-mono text-[10px] ${charCount > 1400 ? 'text-amber-500' : 'text-steel-light/50'}`}>
               {charCount}/1500
