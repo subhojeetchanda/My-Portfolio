@@ -10,19 +10,21 @@ import { track } from '@vercel/analytics';
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-steel bg-ink/90 backdrop-blur-sm no-print">
-      <div className="max-w-7xl mx-auto px-4 md:pl-[144px] h-16 flex items-center justify-between">
-        <Link href="/" className="font-display text-xl font-bold uppercase tracking-wider text-paper whitespace-nowrap flex-shrink-0">
-          {profile.name}
-        </Link>
+      <div className="max-w-7xl mx-auto px-4 md:pl-[144px] h-16 flex items-center justify-between gap-4">
+        <div className="flex items-center gap-8 lg:gap-12 flex-shrink-0">
+          <Link href="/" className="font-display text-xl font-bold uppercase tracking-wider text-paper whitespace-nowrap flex-shrink-0">
+            {profile.name}
+          </Link>
 
         <nav className="hidden xl:flex gap-4 xl:gap-6 font-mono text-sm text-steel-light whitespace-nowrap">
           <Link href="/#raw-material" className="hover:text-paper transition-colors">01 Material</Link>
           <Link href="/#furnace" className="hover:text-paper transition-colors">02 Furnace</Link>
           <Link href="/#rolling-mill" className="hover:text-paper transition-colors">03 Mill</Link>
           <Link href="/#quality-lab" className="hover:text-paper transition-colors">04 Lab</Link>
-        </nav>
+          </nav>
+        </div>
 
-        <div className="flex items-center gap-2 md:gap-4">
+        <div className="flex items-center gap-2 md:gap-4 flex-shrink-0">
           <CommandPaletteTrigger />
           <ThemeToggle />
           <Link href="#contact" className="hidden xl:inline font-mono text-sm text-molten hover:text-ember transition-colors whitespace-nowrap">
