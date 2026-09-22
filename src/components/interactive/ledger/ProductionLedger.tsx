@@ -44,7 +44,7 @@ export default async function ProductionLedger() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Left Column: Strip Chart */}
-        <div className="border border-steel bg-ink p-4 md:p-6 flex flex-col gap-4">
+        <div className="border border-steel bg-ink p-4 md:p-6 flex flex-col gap-4 h-fit">
           <StripChartRecorder data={github.weeks} total={github.totalContributions} />
         </div>
 

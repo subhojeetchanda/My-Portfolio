@@ -75,7 +75,7 @@ export default function StripChartRecorder({ data, total }: StripChartProps) {
   };
 
   return (
-    <div className="w-full h-full flex flex-col">
+    <div className="w-full flex flex-col">
       <div className="flex justify-between items-start mb-4">
         <div>
           <h4 className="font-mono text-sm text-paper uppercase tracking-widest mb-1">Strip-Chart Recorder</h4>
@@ -90,7 +90,7 @@ export default function StripChartRecorder({ data, total }: StripChartProps) {
         </div>
       </div>
 
-      <div className="relative w-full flex-1 overflow-hidden border border-steel/50 bg-[#e8e4db] rounded-sm p-2 flex flex-col justify-center" aria-labelledby={`${chartId}-title`}>
+      <div className="relative w-full overflow-hidden border border-steel/50 bg-[#e8e4db] rounded-sm flex flex-col justify-center" aria-labelledby={`${chartId}-title`}>
         <div className="sr-only" id={`${chartId}-title`}>
           Line chart showing GitHub contributions over the last 12 months. Total {total} contributions. 
           Use left and right arrow keys to explore weekly data.
