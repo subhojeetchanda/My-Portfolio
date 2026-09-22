@@ -15,7 +15,7 @@ export default function Header() {
           {profile.name}
         </Link>
 
-        <nav className="hidden lg:flex gap-4 xl:gap-6 font-mono text-sm text-steel-light whitespace-nowrap">
+        <nav className="hidden xl:flex gap-4 xl:gap-6 font-mono text-sm text-steel-light whitespace-nowrap">
           <Link href="/#raw-material" className="hover:text-paper transition-colors">01 Material</Link>
           <Link href="/#furnace" className="hover:text-paper transition-colors">02 Furnace</Link>
           <Link href="/#rolling-mill" className="hover:text-paper transition-colors">03 Mill</Link>
@@ -25,7 +25,7 @@ export default function Header() {
         <div className="flex items-center gap-2 md:gap-4">
           <CommandPaletteTrigger />
           <ThemeToggle />
-          <Link href="#contact" className="hidden lg:inline font-mono text-sm text-molten hover:text-ember transition-colors whitespace-nowrap">
+          <Link href="#contact" className="hidden xl:inline font-mono text-sm text-molten hover:text-ember transition-colors whitespace-nowrap">
             Contact
           </Link>
           {/* Standard View Toggle */}
