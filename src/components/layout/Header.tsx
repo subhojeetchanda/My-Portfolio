@@ -32,15 +32,31 @@ export default function Header() {
           <div onClick={() => track('Toggle Standard View')}>
             <StandardViewToggle />
           </div>
-          <a
-            href="/Subhojeet_Chanda_Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => track('Download Resume')}
-            className="border border-steel hover:border-steel-light text-paper px-3 py-1.5 text-sm font-mono transition-colors"
-          >
-            Resume PDF
-          </a>
+          <div className="flex border border-steel hover:border-steel-light transition-colors group">
+            <a
+              href="https://drive.google.com/file/d/17ml297sXWrK8GxLu5FuVsAwTuUhW6Ut-/view"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => track('View Resume')}
+              className="text-paper px-3 py-1.5 text-sm font-mono hover:bg-steel/20 transition-colors"
+            >
+              Resume PDF
+            </a>
+            <div className="w-px bg-steel group-hover:bg-steel-light transition-colors"></div>
+            <a
+              href="https://drive.google.com/uc?export=download&id=17ml297sXWrK8GxLu5FuVsAwTuUhW6Ut-"
+              onClick={() => track('Download Resume')}
+              className="text-paper px-2 py-1.5 text-sm font-mono flex items-center justify-center hover:bg-steel/20 transition-colors"
+              aria-label="Download Resume"
+              title="Download Resume"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </header>
