@@ -1,29 +1,25 @@
 'use client';
 
 import { useEffect, useState, useRef } from 'react';
-import { motion, useInView, useSpring, useTransform, useReducedMotion } from 'framer-motion';
+import { motion, useInView, useMotionValue, animate, useTransform, useReducedMotion } from 'framer-motion';
 
 // Individual Odometer for a single number
 function OdometerNumber({ value }: { value: number }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-50px' });
+  const inView = useInView(ref, { once: true });
   const prefersReducedMotion = useReducedMotion();
   
-  const spring = useSpring(0, {
-    damping: 30,
-    stiffness: 100,
-    mass: 1,
-  });
-  
-  const display = useTransform(spring, (current) => Math.round(current));
+  const count = useMotionValue(0);
+  const display = useTransform(count, (current) => Math.round(current));
   
   useEffect(() => {
     if (prefersReducedMotion) {
-      spring.set(value);
+      count.set(value);
     } else if (inView) {
-      spring.set(value);
+      const controls = animate(count, value, { duration: 1.5, ease: "easeOut" });
+      return controls.stop;
     }
-  }, [inView, spring, value, prefersReducedMotion]);
+  }, [inView, value, count, prefersReducedMotion]);
 
   if (prefersReducedMotion) {
     return <span>{value}</span>;

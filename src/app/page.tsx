@@ -14,8 +14,13 @@ import ProductionLedger from '@/components/interactive/ledger/ProductionLedger';
 import ConsignmentForm from '@/components/interactive/dispatch/ConsignmentForm';
 import PlantShiftClock from '@/components/interactive/dispatch/PlantShiftClock';
 import ReplayIntroButton from '@/components/interactive/ReplayIntroButton';
+import SelfAuditCertificate from '@/components/static/SelfAuditCertificate';
+import ContentIntegritySeal from '@/components/static/ContentIntegritySeal';
+import TraceabilityQR from '@/components/static/TraceabilityQR';
 import dynamic from 'next/dynamic';
 
+const TheVault = dynamic(() => import('@/components/interactive/TheVault'));
+const CommitTicker = dynamic(() => import('@/components/interactive/CommitTicker'));
 const HeroEmbers = dynamic(() => import('@/components/interactive/HeroEmbers'));
 const HeroNamePour = dynamic(() => import('@/components/interactive/HeroNamePour'), { ssr: true });
 
@@ -56,6 +61,9 @@ export default function Home() {
                   CONTACT
                 </Link>
               </PointerSheen>
+              <div className="ml-auto hidden md:block">
+                <TraceabilityQR url="https://subhojeetchanda.vercel.app" label="SITE TRACEABILITY" />
+              </div>
             </div>
           </FadeIn>
         </section>
@@ -147,7 +155,7 @@ export default function Home() {
           <StageBadge text="04 QUALITY LAB" />
           
           <h3 className="font-display text-3xl font-bold uppercase mb-8 text-paper mt-8">Mill Test Certificate</h3>
-          <div className="overflow-x-auto border border-steel">
+          <div className="overflow-x-auto border border-steel mb-12">
             <table className="w-full text-left border-collapse min-w-[600px]">
               <thead>
                 <tr className="border-b border-steel bg-steel/10 font-mono text-xs text-steel-light uppercase tracking-wider">
@@ -179,6 +187,9 @@ export default function Home() {
               </tbody>
             </table>
           </div>
+        <div className="mt-16">
+          <SelfAuditCertificate />
+        </div>
         </section>
 
         {/* STAGE 5: DISPATCH */}
@@ -270,11 +281,17 @@ export default function Home() {
           </div>
         </section>
 
+        {/* THE VAULT */}
+        <TheVault />
+
+        {/* CONTENT INTEGRITY SEAL */}
+        <ContentIntegritySeal />
       </div>
 
       {/* Global Footer */}
-      <footer className="w-full border-t border-steel/30 py-6 mt-12 flex justify-center col-span-full absolute bottom-0 left-0">
+      <footer className="w-full border-t border-steel/30 py-6 mt-12 flex flex-col items-center justify-center col-span-full relative">
         <ReplayIntroButton />
+        <CommitTicker />
       </footer>
     </div>
   );

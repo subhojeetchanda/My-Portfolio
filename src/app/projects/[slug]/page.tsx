@@ -1,6 +1,7 @@
 import { profile } from '@/content/profile';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import TraceabilityQR from '@/components/static/TraceabilityQR';
 
 // Use generateStaticParams to statically generate all project pages
 export function generateStaticParams() {
@@ -84,6 +85,10 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
                   {project.links.live === 'TODO' ? 'TODO (Check docs/TODO.md)' : project.links.live}
                 </a>
               </div>
+            </div>
+            
+            <div className="mt-8 pt-8 border-t border-steel flex justify-center">
+              <TraceabilityQR url={`https://subhojeetchanda.vercel.app/projects/${slug}`} label="PROJECT TRACEABILITY" />
             </div>
           </div>
         </div>

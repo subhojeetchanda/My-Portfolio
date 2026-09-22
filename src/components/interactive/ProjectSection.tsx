@@ -161,9 +161,9 @@ export default function ProjectSection({ projects }: { projects: Project[] }) {
           <PointerSheen key={project.id} className="border border-steel bg-steel/5 relative group">
             <motion.div
               layout
-              initial={{ opacity: 0, clipPath: 'inset(0 100% 0 0)' }}
-              whileInView={{ opacity: 1, clipPath: 'inset(0 0% 0 0)' }}
-              viewport={{ once: true, margin: '-50px' }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ 
                 type: 'tween', 
                 ease: 'easeOut',
