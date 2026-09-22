@@ -51,13 +51,13 @@ export default function Home() {
           </FadeIn>
           <FadeIn delay={0.4}>
             <div className="flex flex-wrap gap-4">
-              <PointerSheen className="inline-block transition-transform duration-300 hover:scale-105">
-                <Link href="#rolling-mill" className="bg-molten text-ink font-mono px-6 py-3 font-bold hover:bg-ember transition-colors block h-full w-full">
+              <PointerSheen className="inline-block transition-transform duration-300 hover:scale-105 w-full sm:w-auto">
+                <Link href="#rolling-mill" className="bg-molten text-ink font-mono px-6 py-3 font-bold hover:bg-ember transition-colors block h-full w-full text-center">
                   VIEW PROJECTS
                 </Link>
               </PointerSheen>
-              <PointerSheen className="inline-block transition-transform duration-300 hover:-translate-y-1">
-                <Link href="#dispatch" className="border border-steel text-paper font-mono px-6 py-3 hover:border-steel-light hover:bg-steel/10 transition-colors block h-full w-full">
+              <PointerSheen className="inline-block transition-transform duration-300 hover:-translate-y-1 w-full sm:w-auto">
+                <Link href="/#dispatch" className="border border-steel text-paper font-mono px-6 py-3 hover:border-steel-light hover:bg-steel/10 transition-colors block h-full w-full text-center">
                   CONTACT
                 </Link>
               </PointerSheen>

@@ -25,7 +25,7 @@ export default function Header() {
         <div className="flex items-center gap-2 md:gap-4 flex-shrink-0">
           <CommandPaletteTrigger />
           <ThemeToggle />
-          <Link href="#contact" className="hidden xl:inline font-mono text-sm text-molten hover:text-ember transition-colors whitespace-nowrap">
+          <Link href="/#dispatch" className="hidden xl:inline font-mono text-sm text-molten hover:text-ember transition-colors whitespace-nowrap">
             Contact
           </Link>
           {/* Standard View Toggle */}
@@ -38,19 +38,19 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => track('View Resume')}
-              className="text-paper px-3 py-1.5 text-sm font-mono hover:bg-steel/20 transition-colors whitespace-nowrap"
+              className="text-paper px-3 py-1.5 text-sm font-mono hover:bg-steel/20 transition-colors whitespace-nowrap hidden sm:block"
             >
               Resume PDF
             </a>
-            <div className="w-px bg-steel group-hover:bg-steel-light transition-colors"></div>
+            <div className="w-px bg-steel group-hover:bg-steel-light transition-colors hidden sm:block"></div>
             <a
               href="https://drive.google.com/uc?export=download&id=17ml297sXWrK8GxLu5FuVsAwTuUhW6Ut-"
               onClick={() => track('Download Resume')}
-              className="text-paper px-2 py-1.5 text-sm font-mono flex items-center justify-center hover:bg-steel/20 transition-colors"
+              className="text-paper px-3 py-1.5 sm:px-2 sm:py-1.5 text-sm font-mono flex items-center justify-center hover:bg-steel/20 transition-colors"
               aria-label="Download Resume"
               title="Download Resume"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="sm:w-[14px] sm:h-[14px]">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                 <polyline points="7 10 12 15 17 10"></polyline>
                 <line x1="12" y1="15" x2="12" y2="3"></line>

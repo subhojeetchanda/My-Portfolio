@@ -38,7 +38,7 @@ export default function HeroNamePour({ name }: HeroNamePourProps) {
     return (
       <div className="relative">
         {/* We use a CSS class to hide this ONLY if data-intro="play" is present on HTML */}
-        <h1 className="font-display text-6xl md:text-8xl font-bold uppercase mb-6 text-paper leading-none tracking-tight intro-name-fallback">
+        <h1 className="font-display text-5xl sm:text-6xl md:text-8xl font-bold uppercase mb-6 text-paper leading-none tracking-tight intro-name-fallback break-words">
           {name}
         </h1>
       </div>
@@ -48,7 +48,7 @@ export default function HeroNamePour({ name }: HeroNamePourProps) {
   if (!shouldPlay) {
     return (
       <div className="relative">
-        <h1 className="font-display text-6xl md:text-8xl font-bold uppercase mb-6 text-paper leading-none tracking-tight">
+        <h1 className="font-display text-5xl sm:text-6xl md:text-8xl font-bold uppercase mb-6 text-paper leading-none tracking-tight break-words">
           {name}
         </h1>
       </div>
@@ -56,7 +56,7 @@ export default function HeroNamePour({ name }: HeroNamePourProps) {
   }
 
   return (
-    <div className="relative mb-6 pb-2 w-max group" aria-label={name}>
+    <div className="relative mb-6 pb-2 inline-block max-w-full group" aria-label={name}>
       {/* Spark weld arc container */}
       <div className="absolute bottom-0 left-0 h-[2px] w-full overflow-hidden pointer-events-none z-30">
         <div className="absolute top-0 left-0 h-full w-[20%] bg-white shadow-[0_0_10px_4px_rgba(255,255,255,0.8),0_0_20px_8px_rgba(255,90,31,0.6)] animate-weld-arc rounded-full"></div>
@@ -71,13 +71,13 @@ export default function HeroNamePour({ name }: HeroNamePourProps) {
 
       <div className="relative z-10 flex">
         {/* Layer 1: Base (Cooled steel/paper color) */}
-        <h1 className="font-display text-6xl md:text-8xl font-bold uppercase text-paper leading-none tracking-tight">
+        <h1 className="font-display text-5xl sm:text-6xl md:text-8xl font-bold uppercase text-paper leading-none tracking-tight break-words">
           {name}
         </h1>
 
         {/* Layer 2: Molten heat overlay */}
         <h1 
-          className="absolute inset-0 font-display text-6xl md:text-8xl font-bold uppercase text-molten leading-none tracking-tight animate-cool-down pointer-events-none mix-blend-screen"
+          className="absolute inset-0 font-display text-5xl sm:text-6xl md:text-8xl font-bold uppercase text-molten leading-none tracking-tight animate-cool-down pointer-events-none mix-blend-screen break-words"
           aria-hidden="true"
         >
           {name}
@@ -85,7 +85,7 @@ export default function HeroNamePour({ name }: HeroNamePourProps) {
 
         {/* Layer 3: Glow overlay blurred */}
         <h1 
-          className="absolute inset-0 font-display text-6xl md:text-8xl font-bold uppercase text-molten leading-none tracking-tight animate-cool-down-glow blur-md pointer-events-none mix-blend-screen"
+          className="absolute inset-0 font-display text-5xl sm:text-6xl md:text-8xl font-bold uppercase text-molten leading-none tracking-tight animate-cool-down-glow blur-md pointer-events-none mix-blend-screen break-words"
           aria-hidden="true"
         >
           {name}
