@@ -91,7 +91,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="antialiased min-h-screen flex flex-col">
+      <body className="antialiased min-h-screen flex flex-col overflow-x-hidden">
         <a href="#main-content" className="skip-link">Skip to main content</a>
         <a href="/standard" className="skip-link" style={{ top: '-40px', left: '160px' }}>Skip to standard view</a>
         <Header />

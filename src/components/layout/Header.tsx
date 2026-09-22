@@ -11,11 +11,11 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-steel bg-ink/90 backdrop-blur-sm no-print">
       <div className="max-w-7xl mx-auto px-4 md:pl-[144px] h-16 flex items-center justify-between">
-        <Link href="/" className="font-display text-xl font-bold uppercase tracking-wider text-paper">
+        <Link href="/" className="font-display text-xl font-bold uppercase tracking-wider text-paper whitespace-nowrap flex-shrink-0">
           {profile.name}
         </Link>
 
-        <nav className="hidden md:flex gap-6 font-mono text-sm text-steel-light">
+        <nav className="hidden lg:flex gap-4 xl:gap-6 font-mono text-sm text-steel-light whitespace-nowrap">
           <Link href="/#raw-material" className="hover:text-paper transition-colors">01 Material</Link>
           <Link href="/#furnace" className="hover:text-paper transition-colors">02 Furnace</Link>
           <Link href="/#rolling-mill" className="hover:text-paper transition-colors">03 Mill</Link>
@@ -25,7 +25,7 @@ export default function Header() {
         <div className="flex items-center gap-2 md:gap-4">
           <CommandPaletteTrigger />
           <ThemeToggle />
-          <Link href="#contact" className="hidden md:inline font-mono text-sm text-molten hover:text-ember transition-colors">
+          <Link href="#contact" className="hidden lg:inline font-mono text-sm text-molten hover:text-ember transition-colors whitespace-nowrap">
             Contact
           </Link>
           {/* Standard View Toggle */}
@@ -38,7 +38,7 @@ export default function Header() {
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => track('View Resume')}
-              className="text-paper px-3 py-1.5 text-sm font-mono hover:bg-steel/20 transition-colors"
+              className="text-paper px-3 py-1.5 text-sm font-mono hover:bg-steel/20 transition-colors whitespace-nowrap"
             >
               Resume PDF
             </a>
