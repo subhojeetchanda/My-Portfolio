@@ -18,6 +18,7 @@ export type ProjectAttributes = {
 export type Project = {
   id: string;
   title: string;
+  problem?: string;
   stack: string[];
   links: { github: string | 'TODO'; live: string | 'TODO' };
   bulletPoints: string[];
@@ -131,6 +132,7 @@ export const profile: ProfileData = {
       id: "text-sensor-fusion",
       slug: "text-sensor-fusion",
       title: "Confidence-Weighted Text-Sensor Fusion for Urban Routing",
+      problem: "Mainstream navigation systems optimize purely for time and distance, completely ignoring short-horizon environmental hazards like PM2.5 spikes. Furthermore, accurately predicting these localized hazards is difficult because naively combining continuous physical sensor data with irregular text-based news alerts often degrades AI model performance.",
       stack: ["Python", "XGBoost", "FastAPI"],
       links: { github: "https://github.com/subhojeetchanda/Confidence-Weighted-Text-Sensor-Fusion-for-Urban-Routing", live: "https://confidence-weighted-text-sensor-fusion-for-urban-production.up.railway.app/" },
       bulletPoints: [
@@ -150,6 +152,7 @@ export const profile: ProfileData = {
       id: "carelink",
       slug: "carelink",
       title: "CareLink: AI Diagnostic Assistant",
+      problem: "Medical imaging diagnosis is often bottlenecked by a lack of explainable AI for doctors, while the resulting clinical reports are filled with jargon that leaves patients confused. There is a critical need for a unified platform that accelerates trustworthy diagnosis while bridging the communication gap between providers and patients.",
       stack: ["Next.js", "Node.js", "TensorFlow", "Firebase", "Socket.io"],
       links: { github: "https://github.com/subhojeetchanda/CareLink", live: "https://care-link-jade.vercel.app/" },
       bulletPoints: [
@@ -169,6 +172,7 @@ export const profile: ProfileData = {
       id: "safesphere",
       slug: "safesphere",
       title: "SafeSphere",
+      problem: "Authorities struggle to monitor tourist safety in remote or high-risk regions due to delayed incident reporting and a lack of real-time tracking. There is a critical need for a system capable of instantly identifying distress signals—such as dangerous route deviations or sudden location drop-offs—to prevent emergencies.",
       stack: ["Next.js", "Node.js", "Express", "TypeScript", "Hyperledger", "XGBoost"],
       links: { github: "https://github.com/subhojeetchanda/Smart_Tourist_Safety_System", live: "https://safesphere-dashboard.vercel.app" },
       bulletPoints: [

@@ -22,8 +22,7 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
   // Since we only have 3 bullet points per project in the resume, we approximate:
   // BP 1 & 2 -> Approach
   // BP 3 -> Result
-  // Problem -> TODO
-  const problem = "[ TODO: Add 1-2 sentences describing the core problem this project solves ]";
+  const problem = project.problem || "[ TODO: Add 1-2 sentences describing the core problem this project solves ]";
   const approach = project.bulletPoints.slice(0, 2);
   const result = project.bulletPoints.length > 2 ? project.bulletPoints[project.bulletPoints.length - 1] : "[ TODO: Add explicit result metrics ]";
 
