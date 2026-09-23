@@ -17,32 +17,25 @@ export default function HeroNamePour({ name }: HeroNamePourProps) {
     
     // Check if we should play the animation
     if (!prefersReducedMotion) {
-      const hasPlayed = localStorage.getItem('forged:intro:v2');
-      if (!hasPlayed) {
-        
-        const startPour = () => {
-          setShouldPlay(true);
-          localStorage.setItem('forged:intro:v2', 'true');
-          // Remove the data-intro flag after animation completes to allow normal interaction
-          setTimeout(() => {
-            document.documentElement.removeAttribute('data-intro');
-          }, 2000);
-        };
-        
-        window.addEventListener('ignition-complete', startPour, { once: true });
-        
-        // Safety fallback in case IgnitionSequence fails or is removed
-        const fallbackTimer = setTimeout(() => {
-          startPour();
-        }, 4000);
-        
-        return () => {
-          window.removeEventListener('ignition-complete', startPour);
-          clearTimeout(fallbackTimer);
-        };
-      } else {
-        document.documentElement.removeAttribute('data-intro');
-      }
+      const startPour = () => {
+        setShouldPlay(true);
+        // Remove the data-intro flag after animation completes to allow normal interaction
+        setTimeout(() => {
+          document.documentElement.removeAttribute('data-intro');
+        }, 2000);
+      };
+      
+      window.addEventListener('ignition-complete', startPour, { once: true });
+      
+      // Safety fallback in case IgnitionSequence fails or is removed
+      const fallbackTimer = setTimeout(() => {
+        startPour();
+      }, 4000);
+      
+      return () => {
+        window.removeEventListener('ignition-complete', startPour);
+        clearTimeout(fallbackTimer);
+      };
     } else {
       document.documentElement.removeAttribute('data-intro');
     }

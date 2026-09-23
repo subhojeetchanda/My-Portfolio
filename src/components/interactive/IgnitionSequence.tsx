@@ -16,7 +16,6 @@ export default function IgnitionSequence() {
   const [visibleLines, setVisibleLines] = useState(0);
 
   const completeSequence = useCallback(() => {
-    localStorage.setItem('forged:intro:v2', 'true');
     setStage('done');
     window.dispatchEvent(new Event('ignition-complete'));
   }, []);
@@ -25,12 +24,11 @@ export default function IgnitionSequence() {
     // 1. Check if we should play
     if (typeof window === 'undefined') return;
 
-    const hasPlayed = localStorage.getItem('forged:intro:v2');
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isLowEnd = (navigator.hardwareConcurrency || 4) <= 4;
     
-    // We only play if it hasn't played AND device is capable
-    if (hasPlayed || prefersReducedMotion || isLowEnd) {
+    // We only skip if device is not capable
+    if (prefersReducedMotion || isLowEnd) {
       completeSequence();
       return;
     }

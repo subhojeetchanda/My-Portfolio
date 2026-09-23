@@ -84,7 +84,7 @@ export default function RootLayout({
                   document.documentElement.classList.add('light');
                 }
                 // Intro animation check
-                if (!localStorage.getItem('forged:intro:v2') && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                   document.documentElement.setAttribute('data-intro', 'play');
                 }
               } catch (e) {}
