@@ -4,6 +4,7 @@ import "./globals.css";
 import { profile } from "@/content/profile";
 import Header from "@/components/layout/Header";
 import MotionProvider from "@/components/layout/MotionProvider";
+import IgnitionSequence from "@/components/interactive/IgnitionSequence";
 import { Analytics } from "@vercel/analytics/react";
 
 const barlowCondensed = Barlow_Condensed({
@@ -83,7 +84,7 @@ export default function RootLayout({
                   document.documentElement.classList.add('light');
                 }
                 // Intro animation check
-                if (!localStorage.getItem('forged:intro:v1') && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                if (!localStorage.getItem('forged:intro:v2') && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                   document.documentElement.setAttribute('data-intro', 'play');
                 }
               } catch (e) {}
@@ -92,6 +93,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased min-h-screen flex flex-col overflow-x-hidden">
+        <IgnitionSequence />
         <a href="#main-content" className="skip-link">Skip to main content</a>
         <a href="/standard" className="skip-link" style={{ top: '-40px', left: '160px' }}>Skip to standard view</a>
         <Header />

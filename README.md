@@ -51,6 +51,7 @@ Adjusting these values will automatically change how the project ranks when a re
 ## Signature Features
 The site includes several advanced interactive features designed for a premium feel:
 - **Command Palette (`Ctrl+K`)**: Quickly jump between sections, copy email, or toggle views. Implemented in `src/components/interactive/CommandPalette.tsx`.
+- **Boot Sequence & Signature Intro**: First-time visitors experience a SCADA terminal boot overlay followed by a molten name pour. This state is stored in `localStorage` as `forged:intro:v2`. To replay it during development, use the Command Palette or clear the localStorage key.
 - **Theme Toggle**: Switch between Day Shift (light mode) and Night Shift (dark mode). State is preserved in localStorage and prevents hydration flashes.
 - **Pointer Sheen**: A radial CSS gradient that follows the mouse cursor over CTA buttons and project cards (disabled on touch devices).
 - **Odometer Numerals**: Numbers in the content with a `%` or `+` suffix automatically animate upward when scrolling into view.

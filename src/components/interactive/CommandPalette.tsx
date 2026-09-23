@@ -118,11 +118,11 @@ export default function CommandPalette({ isOpen, onClose }: { isOpen: boolean; o
     },
     {
       id: 'replay-intro',
-      title: 'Replay Signature Intro',
-      description: 'Run the molten name pour animation again',
+      title: 'Replay Full Sequence',
+      description: 'Run the boot terminal and molten pour animation again',
       icon: <FileText size={16} />,
       onSelect: () => {
-        localStorage.removeItem('forged:intro:v1');
+        localStorage.removeItem('forged:intro:v2');
         window.location.reload();
       }
     },
