@@ -40,7 +40,7 @@ export default function IgnitionSequence() {
     // 2. Safety timeout
     const safetyTimeout = setTimeout(() => {
       completeSequence();
-    }, 3000);
+    }, 5000);
 
     // 3. Skip listeners
     const handleSkip = () => {
@@ -72,13 +72,13 @@ export default function IgnitionSequence() {
     LINES.forEach((_, i) => {
       timers.push(setTimeout(() => {
         setVisibleLines(i + 1);
-      }, i * 150)); // 150ms per line
+      }, i * 300)); // 300ms per line
     });
 
     // Trigger flash out
     timers.push(setTimeout(() => {
       setStage('flash');
-    }, LINES.length * 150 + 200));
+    }, LINES.length * 300 + 400));
 
     return () => timers.forEach(clearTimeout);
   }, [stage]);
@@ -124,7 +124,7 @@ export default function IgnitionSequence() {
                   className="absolute top-0 left-0 h-full bg-molten transition-all ease-linear"
                   style={{ 
                     width: `${Math.min((visibleLines / LINES.length) * 100, 100)}%`,
-                    transitionDuration: '150ms'
+                    transitionDuration: '300ms'
                   }}
                 ></div>
               </div>
