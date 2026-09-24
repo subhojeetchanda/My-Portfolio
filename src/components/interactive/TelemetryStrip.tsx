@@ -23,7 +23,7 @@ export default function TelemetryStrip() {
         </div>
 
         {/* Scrolling or static strip */}
-        <div className="flex-1 overflow-hidden whitespace-nowrap">
+        <div className="flex-1 min-w-0 overflow-hidden whitespace-nowrap">
           <div className="font-mono text-[10px] sm:text-xs text-steel-light flex items-center gap-6 sm:gap-12 animate-marquee">
             {/* Double it for infinite seamless scroll, or just show it if it fits */}
             <div className="flex items-center gap-6 sm:gap-12">

@@ -33,7 +33,7 @@ export default function Home() {
       
       <HeatLine />
 
-      <div className="flex-1 px-4 md:px-12 pb-32">
+      <div className="flex-1 min-w-0 px-4 md:px-12 pb-32">
         {/* STAGE 0: THE GATE (HERO) */}
         <section id="gate" className="min-h-[85vh] flex flex-col justify-center py-20 relative">
           <HeroEmbers />
@@ -53,7 +53,7 @@ export default function Home() {
             </p>
           </FadeIn>
           <FadeIn delay={0.4}>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 items-start">
               <PointerSheen className="inline-block transition-transform duration-300 hover:scale-105 w-full sm:w-auto">
                 <Link href="#rolling-mill" className="bg-molten text-ink font-mono px-6 py-3 font-bold hover:bg-ember transition-colors block h-full w-full text-center">
                   VIEW PROJECTS
