@@ -24,6 +24,18 @@ export type Project = {
   bulletPoints: string[];
   attributes: ProjectAttributes;
   slug?: string;
+  whyIBuiltThis?: string;
+  decisions?: { title: string; reasons: string[] }[];
+};
+
+export type FailureEntry = {
+  id: string;
+  title: string;
+  cause: string;
+  resolution: string;
+  lesson: string;
+  project?: string;
+  status: 'RESOLVED' | 'ONGOING';
 };
 
 export type SkillGroup = {
@@ -53,6 +65,7 @@ export type ProfileData = {
   about: {
     headline: string;
     summary: string;
+    behindTheSystem?: string;
   };
   experience: Experience[];
   leadership: Experience[];
@@ -70,6 +83,7 @@ export type ProfileData = {
     basedIn?: string;
     typicalReplyTime?: string;
   };
+  failures: FailureEntry[];
 };
 
 export const profile: ProfileData = {
@@ -146,7 +160,11 @@ export const profile: ProfileData = {
         realTime: 0.4,
         impact: 0.7,
         research: 0.95
-      }
+      },
+      whyIBuiltThis: "[PLACEHOLDER: Waiting for why I built this from user]",
+      decisions: [
+        { title: "[PLACEHOLDER: Decision 1]", reasons: ["[PLACEHOLDER: Reason 1]", "[PLACEHOLDER: Reason 2]"] }
+      ]
     },
     {
       id: "carelink",
@@ -166,7 +184,11 @@ export const profile: ProfileData = {
         realTime: 0.7,
         impact: 0.8,
         research: 0.5
-      }
+      },
+      whyIBuiltThis: "[PLACEHOLDER: Waiting for why I built this from user]",
+      decisions: [
+        { title: "[PLACEHOLDER: Decision 1]", reasons: ["[PLACEHOLDER: Reason 1]", "[PLACEHOLDER: Reason 2]"] }
+      ]
     },
     {
       id: "safesphere",
@@ -186,7 +208,11 @@ export const profile: ProfileData = {
         realTime: 0.85,
         impact: 0.9,
         research: 0.3
-      }
+      },
+      whyIBuiltThis: "[PLACEHOLDER: Waiting for why I built this from user]",
+      decisions: [
+        { title: "[PLACEHOLDER: Decision 1]", reasons: ["[PLACEHOLDER: Reason 1]", "[PLACEHOLDER: Reason 2]"] }
+      ]
     }
   ],
   skills: [
@@ -247,6 +273,32 @@ export const profile: ProfileData = {
       status: "CERTIFIED",
       link: "https://www.udemy.com/certificate/UC-ed1b5942-e0b8-4510-a79c-8589806ab18f/?utm_campaign=email&utm_medium=email&utm_source=sendgrid.com",
       issuer: "Udemy"
+    }
+  ],
+  failures: [
+    {
+      id: "f1",
+      title: "[PLACEHOLDER: Incident 1]",
+      cause: "[PLACEHOLDER: Waiting for 3-5 debugging stories from user]",
+      resolution: "[PLACEHOLDER: Resolution description]",
+      lesson: "[PLACEHOLDER: Lesson learned]",
+      status: "RESOLVED"
+    },
+    {
+      id: "f2",
+      title: "[PLACEHOLDER: Incident 2]",
+      cause: "[PLACEHOLDER: Waiting for 3-5 debugging stories from user]",
+      resolution: "[PLACEHOLDER: Resolution description]",
+      lesson: "[PLACEHOLDER: Lesson learned]",
+      status: "RESOLVED"
+    },
+    {
+      id: "f3",
+      title: "[PLACEHOLDER: Incident 3]",
+      cause: "[PLACEHOLDER: Waiting for 3-5 debugging stories from user]",
+      resolution: "[PLACEHOLDER: Resolution description]",
+      lesson: "[PLACEHOLDER: Lesson learned]",
+      status: "RESOLVED"
     }
   ]
 };

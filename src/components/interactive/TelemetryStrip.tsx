@@ -1,14 +1,15 @@
 import { profile } from '@/content/profile';
+import MetricDisclosure from './MetricDisclosure';
 
 export default function TelemetryStrip() {
   // Extract real numbers from the profile for the telemetry
   // These are statically typed here, but they represent the exact numbers in the resume.
   const telemetry = [
-    { label: "DATASETS", value: "5" },
-    { label: "RECOMMENDATIONS", value: "3" },
-    { label: "DETECTION RELIABILITY", value: "+12%" },
-    { label: "X-RAY CLASSIFICATION", value: "91%" },
-    { label: "INCIDENT RESPONSE", value: "-30%" },
+    { label: "DATASETS", value: "5", source: "Developed and evaluated predictive ML models in Python across 5 industrial datasets..." },
+    { label: "RECOMMENDATIONS", value: "3", source: "Identifying operational patterns that informed 3 process-efficiency recommendations." },
+    { label: "DETECTION RELIABILITY", value: "+12%", source: "Validated model performance against real-world plant data and refined fault-detection logic, improving detection reliability by 12%." },
+    { label: "X-RAY CLASSIFICATION", value: "91%", source: "Powered by a DenseNet121 CNN with Grad-CAM for explainable X-ray classification at 91% accuracy." },
+    { label: "INCIDENT RESPONSE", value: "-30%", source: "Spearheaded a smart tourist safety platform... cutting incident response time by 30% through anomaly detection and geo-fencing." },
   ];
 
   return (
@@ -29,7 +30,11 @@ export default function TelemetryStrip() {
               {telemetry.map((t, i) => (
                 <div key={i} className="flex items-center gap-2">
                   <span>{t.label}:</span>
-                  <span className="text-paper font-bold">{t.value}</span>
+                  <MetricDisclosure 
+                    value={<span className="text-paper font-bold">{t.value}</span>}
+                    source={t.source}
+                    label="Source"
+                  />
                 </div>
               ))}
             </div>

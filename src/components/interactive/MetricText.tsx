@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from 'react';
 import { motion, useInView, useMotionValue, animate, useTransform, useReducedMotion } from 'framer-motion';
+import MetricDisclosure from './MetricDisclosure';
 
 // Individual Odometer for a single number
 function OdometerNumber({ value }: { value: number }) {
@@ -53,7 +54,11 @@ export default function MetricText({ children }: { children: string }) {
     
     parts.push(
       <span key={match.index} className="inline-flex items-baseline">
-        <OdometerNumber value={num} />
+        <MetricDisclosure 
+          value={<OdometerNumber value={num} />} 
+          source={children} 
+          label="Source" 
+        />
         {suffix && <span className="text-molten font-mono">{suffix}</span>}
       </span>
     );

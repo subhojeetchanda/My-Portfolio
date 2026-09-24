@@ -1,29 +1,7 @@
-# Missing Links & Assets (Launch Blocker)
+# TODO
 
-The following items are marked as 'TODO' in `src/content/profile.ts` and must be populated before launch:
-
-## Social & Contact Links
-- [x] `profile.links.linkedin`: Add LinkedIn URL
-- [x] `profile.links.github`: Add GitHub URL
-- [ ] `profile.resumeUrl`: Add link to hosted PDF resume (or place `Subhojeet_Chanda_Resume.pdf` in `/public` directory)
-
-## Project Links
-### Text-Sensor Fusion
-- [x] `links.github`: Add GitHub URL
-- [x] `links.live`: Add live/demo URL (if available)
-
-### CareLink
-- [x] `links.github`: Add GitHub URL
-- [x] `links.live`: Add live/demo URL (if available)
-
-### SafeSphere
-- [x] `links.github`: Add GitHub URL
-- [x] `links.live`: Add live/demo URL (if available)
-
-## Other Missing Items
-- [ ] Favicon: Replace the default Vercel/Next.js favicon with a custom brand icon (e.g. an anvil or steel drop) in `src/app/favicon.ico`.
-- [ ] Domain: Configure the real custom domain instead of `https://forged.dev` placeholders in `sitemap.ts` and `layout.tsx`.
-
-## Signature Features (Pending)
-- [ ] **Batch 2: Signature Demos**: Implement Fault Detector Lab and Route Exposure Lab.
-- [ ] **Batch 3: Optional Polish**: Implement View Transitions API and Dispatch Molten pour animation.
+## Needs User Input
+- **BATCH 1**: Provide 3-5 real debugging stories (Cause / Resolution / Lesson) for the FAILURE ARCHIVE.
+- **BATCH 2**: Provide engineering decision logs for each of the 3 projects (2-4 short entries on why specific tech choices were made).
+- **BATCH 3**: Confirm meaning of existing bullet text restructuring (PROBLEM -> APPROACH -> RESULT).
+- **BATCH 5**: Provide the "Why I built this" text for each project and a "Behind the System" personal paragraph.

@@ -52,6 +52,13 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
             <p className="font-sans text-steel-light leading-relaxed">{problem}</p>
           </section>
 
+          {project.whyIBuiltThis && (
+            <section>
+              <h2 className="font-display text-2xl font-bold uppercase text-paper mb-4 border-b border-steel pb-2">Why I Built This</h2>
+              <p className="font-sans text-steel-light leading-relaxed italic border-l-2 border-molten pl-4">"{project.whyIBuiltThis}"</p>
+            </section>
+          )}
+
           <section>
             <h2 className="font-display text-2xl font-bold uppercase text-paper mb-4 border-b border-steel pb-2">The Approach</h2>
             <ul className="flex flex-col gap-4">
@@ -62,6 +69,26 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               ))}
             </ul>
           </section>
+
+          {project.decisions && project.decisions.length > 0 && (
+            <section>
+              <h2 className="font-display text-2xl font-bold uppercase text-paper mb-4 border-b border-steel pb-2">Engineering Decisions</h2>
+              <div className="flex flex-col gap-6">
+                {project.decisions.map((dec, i) => (
+                  <div key={i} className="bg-steel/5 border border-steel p-4">
+                    <h3 className="font-mono text-sm font-bold text-molten uppercase mb-2">{dec.title}</h3>
+                    <ul className="flex flex-col gap-2">
+                      {dec.reasons.map((r, j) => (
+                        <li key={j} className="font-sans text-sm text-steel-light leading-relaxed relative pl-3 before:content-['-'] before:absolute before:left-0 before:text-steel">
+                          {r}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
 
           <section>
             <h2 className="font-display text-2xl font-bold uppercase text-paper mb-4 border-b border-steel pb-2">The Result</h2>

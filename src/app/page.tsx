@@ -17,12 +17,15 @@ import ReplayIntroButton from '@/components/interactive/ReplayIntroButton';
 import SelfAuditCertificate from '@/components/static/SelfAuditCertificate';
 import ContentIntegritySeal from '@/components/static/ContentIntegritySeal';
 import TraceabilityQR from '@/components/static/TraceabilityQR';
+import SkillsInventory from '@/components/interactive/SkillsInventory';
+import TerminalCommandBar from '@/components/interactive/TerminalCommandBar';
 import dynamic from 'next/dynamic';
 
 const TheVault = dynamic(() => import('@/components/interactive/TheVault'));
 const CommitTicker = dynamic(() => import('@/components/interactive/CommitTicker'));
 const HeroEmbers = dynamic(() => import('@/components/interactive/HeroEmbers'));
 const HeroNamePour = dynamic(() => import('@/components/interactive/HeroNamePour'), { ssr: true });
+import FailureArchive from '@/components/static/FailureArchive';
 
 export default function Home() {
   return (
@@ -62,7 +65,7 @@ export default function Home() {
                 </Link>
               </PointerSheen>
               <div className="ml-auto hidden md:block">
-                <TraceabilityQR url="https://subhojeetchanda.vercel.app" label="SITE TRACEABILITY" />
+                <TraceabilityQR url="https://subhojeetchanda.vercel.app/trace" label="SITE TRACEABILITY" />
               </div>
             </div>
           </FadeIn>
@@ -76,23 +79,7 @@ export default function Home() {
           <StageBadge text="01 RAW MATERIAL" />
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 mt-8">
-            <div className="lg:col-span-2">
-              <h3 className="font-display text-3xl font-bold uppercase mb-8 text-paper">Skills Inventory</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {profile.skills.map((group, i) => (
-                  <FadeIn key={i} delay={i * 0.1}>
-                    <div className="border border-steel p-6 bg-steel/10 transition-all duration-300 hover:-translate-y-1 hover:border-steel-light hover:shadow-[0_0_15px_rgba(255,87,34,0.15)] h-full">
-                      <h4 className="font-mono text-xs text-steel-light uppercase mb-3 border-b border-steel pb-2">{group.category}</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {group.skills.map((skill, j) => (
-                          <span key={j} className="font-sans text-sm text-paper bg-ink border border-steel px-2 py-1">{skill}</span>
-                        ))}
-                      </div>
-                    </div>
-                  </FadeIn>
-                ))}
-              </div>
-            </div>
+            <SkillsInventory />
             
             <div>
               <FadeIn delay={0.4}>
@@ -192,6 +179,9 @@ export default function Home() {
         </div>
         </section>
 
+        {/* STAGE 4B: FAILURE ARCHIVE */}
+        <FailureArchive />
+
         {/* STAGE 5: DISPATCH */}
         <section id="dispatch" className="py-24 border-t border-steel relative">
           <StageBadge text="05 DISPATCH" />
@@ -229,7 +219,20 @@ export default function Home() {
                   </div>
                 )}
               </div>
+
+              {profile.about.behindTheSystem && (
+                <div className="bg-steel/5 p-6 border border-steel/50">
+                  <h4 className="font-mono font-bold text-sm mb-4 uppercase border-b border-steel pb-2 text-paper">Behind the System</h4>
+                  <p className="font-sans text-steel-light leading-relaxed text-sm italic">
+                    "{profile.about.behindTheSystem}"
+                  </p>
+                </div>
+              )}
               
+              <div>
+                <TerminalCommandBar />
+              </div>
+
               <div>
                 <h4 className="font-mono font-bold text-sm mb-4 uppercase border-b border-steel pb-2 text-paper">Alternate Routes</h4>
                 <div className="flex flex-col gap-3 font-mono text-sm">
