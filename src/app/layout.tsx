@@ -97,7 +97,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">Skip to main content</a>
         <a href="/standard" className="skip-link" style={{ top: '-40px', left: '160px' }}>Skip to standard view</a>
         <Header />
-        <main id="main-content" className="flex-grow">
+        <main id="main-content" className="flex-grow w-full">
           <MotionProvider>
             {children}
           </MotionProvider>

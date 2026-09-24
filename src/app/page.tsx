@@ -29,11 +29,11 @@ import FailureArchive from '@/components/static/FailureArchive';
 
 export default function Home() {
   return (
-    <div className="relative max-w-7xl mx-auto flex flex-col md:flex-row">
+    <div className="relative w-full max-w-7xl mx-auto flex flex-col md:flex-row">
       
       <HeatLine />
 
-      <div className="flex-1 min-w-0 px-4 md:px-12 pb-32">
+      <div className="flex-1 px-4 md:px-12 pb-32">
         {/* STAGE 0: THE GATE (HERO) */}
         <section id="gate" className="min-h-[85vh] flex flex-col justify-center py-20 relative">
           <HeroEmbers />

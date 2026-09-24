@@ -36,11 +36,11 @@ export default function MetricDisclosure({ value, label, source }: MetricDisclos
 
   return (
     <span ref={containerRef} className="inline-block relative">
-      <span className="inline-flex items-center gap-1">
+      <span className="inline-block align-bottom whitespace-nowrap">
         {value}
         <button
           onClick={(e) => { e.preventDefault(); setIsOpen(!isOpen); }}
-          className="inline-flex items-center justify-center w-4 h-4 rounded-full border border-steel hover:border-molten hover:text-molten text-steel-light text-[9px] font-mono transition-colors focus:outline-none focus:ring-1 focus:ring-molten bg-ink cursor-pointer"
+          className="inline-block align-middle relative -top-[1px] ml-1 w-4 h-4 rounded-full border border-steel hover:border-molten hover:text-molten text-steel-light text-[9px] font-mono transition-colors focus:outline-none focus:ring-1 focus:ring-molten bg-ink cursor-pointer leading-[14px] text-center"
           aria-expanded={isOpen}
           aria-label="Metric source disclosure"
           title="View Source"

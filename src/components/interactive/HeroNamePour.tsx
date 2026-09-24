@@ -63,7 +63,7 @@ export default function HeroNamePour({ name }: HeroNamePourProps) {
   }
 
   return (
-    <div className="relative mb-6 pb-2 inline-block max-w-full group" aria-label={name}>
+    <div className="relative mb-6 pb-2 w-fit max-w-full group" aria-label={name}>
       {/* Spark weld arc container */}
       <div className="absolute bottom-0 left-0 h-[2px] w-full overflow-hidden pointer-events-none z-30">
         <div className="absolute top-0 left-0 h-full w-[20%] bg-white shadow-[0_0_10px_4px_rgba(255,255,255,0.8),0_0_20px_8px_rgba(255,90,31,0.6)] animate-weld-arc rounded-full"></div>

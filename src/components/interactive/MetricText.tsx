@@ -53,7 +53,7 @@ export default function MetricText({ children }: { children: string }) {
     const suffix = match[2] || '';
     
     parts.push(
-      <span key={match.index} className="inline-flex items-baseline">
+      <span key={match.index} className="inline-block whitespace-nowrap mx-[1px]">
         <MetricDisclosure 
           value={<OdometerNumber value={num} />} 
           source={children} 
@@ -76,11 +76,11 @@ export default function MetricText({ children }: { children: string }) {
   }
 
   return (
-    <span>
+    <span className="w-full">
       {/* Visually hidden real text for screen readers and SEO */}
       <span className="sr-only">{children}</span>
       {/* Animated text for sighted users */}
-      <span aria-hidden="true">{parts}</span>
+      <span aria-hidden="true" className="break-words">{parts}</span>
     </span>
   );
 }
