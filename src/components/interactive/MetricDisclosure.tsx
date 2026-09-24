@@ -55,7 +55,7 @@ export default function MetricDisclosure({ value, label, source }: MetricDisclos
             initial={{ opacity: 0, y: 5 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 5 }}
-            className="absolute z-50 left-0 bottom-full mb-2 w-64 p-3 bg-ink border border-steel shadow-xl text-left"
+            className="absolute z-50 left-0 bottom-full mb-2 w-64 p-3 bg-ink border border-steel shadow-xl text-left whitespace-normal"
           >
             {label && <span className="block font-mono text-[10px] text-molten uppercase mb-1">{label}</span>}
             <span className="block font-sans text-xs text-steel-light leading-relaxed">
