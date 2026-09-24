@@ -278,26 +278,26 @@ export const profile: ProfileData = {
   failures: [
     {
       id: "f1",
-      title: "[PLACEHOLDER: Incident 1]",
-      cause: "[PLACEHOLDER: Waiting for 3-5 debugging stories from user]",
-      resolution: "[PLACEHOLDER: Resolution description]",
-      lesson: "[PLACEHOLDER: Lesson learned]",
+      title: "Next.js hydration mismatch after code-splitting",
+      cause: "After introducing dynamic imports for code-splitting, a component rendered different content on server and client, causing a hydration mismatch and console errors in production.",
+      resolution: "Wrapped the affected component with a client-only guard and verified server/client output matched before re-enabling SSR.",
+      lesson: "Code-splitting for performance can quietly break SSR assumptions — always check hydration warnings after adding dynamic imports.",
       status: "RESOLVED"
     },
     {
       id: "f2",
-      title: "[PLACEHOLDER: Incident 2]",
-      cause: "[PLACEHOLDER: Waiting for 3-5 debugging stories from user]",
-      resolution: "[PLACEHOLDER: Resolution description]",
-      lesson: "[PLACEHOLDER: Lesson learned]",
+      title: "Firebase permission error on write",
+      cause: "A feature worked locally but failed in production with a \"permission denied\" error, because Firestore security rules were still set to their default restrictive state.",
+      resolution: "Updated the security rules to explicitly allow the required read/write pattern, scoped to authenticated users only.",
+      lesson: "Local development often uses relaxed or emulator rules — always test against the real production rule set before shipping.",
       status: "RESOLVED"
     },
     {
       id: "f3",
-      title: "[PLACEHOLDER: Incident 3]",
-      cause: "[PLACEHOLDER: Waiting for 3-5 debugging stories from user]",
-      resolution: "[PLACEHOLDER: Resolution description]",
-      lesson: "[PLACEHOLDER: Lesson learned]",
+      title: "XGBoost model degraded on real plant data",
+      cause: "A model that performed well on the held-out test split showed much weaker accuracy on live data, likely due to a distribution shift between historical and real-time sensor readings.",
+      resolution: "Added input validation and monitored feature distributions, retraining on a more representative recent data window.",
+      lesson: "Good test-split accuracy doesn't guarantee real-world performance — data drift needs to be checked separately.",
       status: "RESOLVED"
     }
   ]
