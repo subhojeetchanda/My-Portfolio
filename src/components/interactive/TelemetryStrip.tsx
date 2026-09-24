@@ -13,7 +13,7 @@ export default function TelemetryStrip() {
   ];
 
   return (
-    <div className="border-y border-steel bg-ink overflow-hidden py-1.5 flex items-center -mx-4 md:-mx-12 px-4 md:px-12">
+    <div className="border-y border-steel bg-ink overflow-hidden py-1.5 flex items-center -mx-4 md:-mx-[144px] px-4 md:px-[144px]">
       <div className="w-full flex items-center justify-between gap-4">
         
         {/* Blinking Status LED */}

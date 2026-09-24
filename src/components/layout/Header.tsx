@@ -10,7 +10,7 @@ import { track } from '@vercel/analytics';
 export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-steel bg-ink/90 backdrop-blur-sm no-print">
-      <div className="max-w-7xl mx-auto px-4 md:pl-[144px] h-16 flex items-center justify-between gap-4">
+      <div className="max-w-7xl mx-auto px-4 md:px-[144px] h-16 flex items-center justify-between gap-4">
         <Link href="/" className="font-display text-xl font-bold uppercase tracking-wider text-paper whitespace-nowrap flex-shrink-0">
           {profile.name}
         </Link>

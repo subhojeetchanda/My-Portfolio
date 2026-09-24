@@ -33,7 +33,7 @@ export default function Home() {
       
       <HeatLine />
 
-      <div className="flex-1 px-4 md:px-12 pb-32">
+      <div className="flex-1 w-full px-4 md:px-[144px] pb-32 z-10">
         {/* STAGE 0: THE GATE (HERO) */}
         <section id="gate" className="min-h-[85vh] flex flex-col justify-center py-20 relative">
           <HeroEmbers />

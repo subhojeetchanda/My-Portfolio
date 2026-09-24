@@ -35,7 +35,7 @@ export default function HeatLine() {
   const boxShadow = prefersReducedMotion ? 'none' : boxShadowRaw;
 
   return (
-    <div className="hidden md:flex w-24 flex-shrink-0 flex-col items-center border-r border-steel relative no-print" aria-hidden="true">
+    <div className="hidden md:flex w-24 flex-col items-center border-r border-steel absolute top-0 left-0 h-full no-print z-0" aria-hidden="true">
       {/* Background line */}
       <div className="w-px bg-steel h-full absolute left-1/2 -translate-x-1/2"></div>
       
