@@ -76,7 +76,7 @@ export default function HeroNamePour({ name }: HeroNamePourProps) {
         <div className="absolute bottom-0 left-[40%] w-[6px] h-[6px] bg-molten rounded-full animate-spark-3 opacity-0"></div>
       </div>
 
-      <div className="relative z-10 flex">
+      <div className="relative z-10">
         {/* Layer 1: Base (Cooled steel/paper color) */}
         <h1 className="font-display text-5xl sm:text-6xl md:text-8xl font-bold uppercase text-paper leading-none tracking-tight break-words">
           {name}
@@ -100,7 +100,7 @@ export default function HeroNamePour({ name }: HeroNamePourProps) {
       </div>
 
       {/* Heat Stamps */}
-      <div className="absolute -top-6 -right-12 sm:-right-24 flex flex-col gap-1 z-20 pointer-events-none">
+      <div className="absolute -top-6 right-0 sm:-right-8 flex flex-col gap-1 z-20 pointer-events-none">
         <div className="font-mono text-[10px] text-molten border border-molten px-1 py-0.5 bg-ink animate-stamp-in opacity-0">
           HEAT NO. 0001
         </div>
