@@ -110,10 +110,17 @@ export default function StandardView() {
             <h2 className="font-display text-3xl font-bold uppercase mb-6 text-paper print:text-black flex items-center gap-4">
               <span className="text-molten print:text-black">04</span> Education
             </h2>
-            <div>
-              <h3 className="font-sans font-bold text-lg text-paper print:text-black">{profile.education.degree}</h3>
-              <p className="font-mono text-sm text-steel-light print:text-gray-700 mb-2">{profile.education.institution}</p>
-              <p className="font-mono text-sm text-molten print:text-black">{profile.education.startDate} – {profile.education.endDate}</p>
+            <div className="flex flex-col gap-6">
+              {profile.education.map((edu, idx) => (
+                <div key={idx}>
+                  <h3 className="font-sans font-bold text-lg text-paper print:text-black">{edu.degree}</h3>
+                  <p className="font-mono text-sm text-steel-light print:text-gray-700 mb-1">{edu.institution}</p>
+                  {edu.skills && (
+                    <p className="font-mono text-xs text-steel-light print:text-gray-600 mb-1">Skills: {edu.skills}</p>
+                  )}
+                  <p className="font-mono text-sm text-molten print:text-black">{edu.startDate} – {edu.endDate}</p>
+                </div>
+              ))}
             </div>
           </section>
 

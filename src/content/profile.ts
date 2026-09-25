@@ -76,7 +76,8 @@ export type ProfileData = {
     degree: string;
     startDate: string;
     endDate: string;
-  };
+    skills?: string;
+  }[];
   achievements: Achievement[];
   contactInfo?: {
     openTo?: string;
@@ -305,12 +306,26 @@ export const profile: ProfileData = {
       skills: ["Data Structures & Algorithms", "Full-Stack Architecture", "Reinforcement Learning", "Federated Learning", "Bayesian Optimization", "Sequential Text Parsing"]
     }
   ],
-  education: {
-    institution: "Vellore Institute of Technology – AP, Amaravati, Andhra Pradesh",
-    degree: "B.Tech CSE",
-    startDate: "Sep 2023",
-    endDate: "Expected May 2027"
-  },
+  education: [
+    {
+      institution: "Vellore Institute of Technology – AP, Amaravati, Andhra Pradesh",
+      degree: "B.Tech CSE",
+      startDate: "Sep 2023",
+      endDate: "Expected May 2027"
+    },
+    {
+      institution: "DAV Public School, Bokaro Steel City",
+      degree: "12th BOARD, CBSE",
+      startDate: "Jun 2021",
+      endDate: "Mar 2023"
+    },
+    {
+      institution: "Chinmaya Vidyalaya, Bokaro Steel City",
+      degree: "10th BOARD, CBSE",
+      startDate: "Apr 2009",
+      endDate: "May 2021"
+    }
+  ],
   achievements: [
     {
       title: "Smart India Hackathon (SIH) 2025",

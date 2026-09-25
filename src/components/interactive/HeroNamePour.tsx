@@ -99,15 +99,7 @@ export default function HeroNamePour({ name }: HeroNamePourProps) {
         </h1>
       </div>
 
-      {/* Heat Stamps */}
-      <div className="absolute -top-6 right-0 sm:-right-8 flex flex-col gap-1 z-20 pointer-events-none">
-        <div className="font-mono text-[10px] text-molten border border-molten px-1 py-0.5 bg-ink animate-stamp-in opacity-0">
-          HEAT NO. 0001
-        </div>
-        <div className="font-mono text-[10px] text-molten border border-molten px-1 py-0.5 bg-ink animate-stamp-in-delayed opacity-0">
-          GRADE: SDE-2027
-        </div>
-      </div>
+
     </div>
   );
 }

@@ -84,12 +84,19 @@ export default function Home() {
             <div>
               <FadeIn delay={0.4}>
                 <h3 className="font-display text-3xl font-bold uppercase mb-8 text-paper">Education Base</h3>
-                <div className="border border-steel p-6 bg-steel/10 flex flex-col h-full transition-all duration-300 hover:-translate-y-1 hover:border-steel-light hover:shadow-[0_0_15px_rgba(255,87,34,0.15)]">
-                  <h4 className="font-sans font-bold text-lg text-paper mb-2">{profile.education.degree}</h4>
-                  <p className="font-mono text-sm text-steel-light mb-auto">{profile.education.institution}</p>
-                  <div className="mt-6 pt-4 border-t border-steel font-mono text-sm text-molten">
-                    {profile.education.startDate} – {profile.education.endDate}
-                  </div>
+                <div className="flex flex-col gap-4 h-full">
+                  {profile.education.map((edu, idx) => (
+                    <div key={idx} className="border border-steel p-6 bg-steel/10 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:border-steel-light hover:shadow-[0_0_15px_rgba(255,87,34,0.15)]">
+                      <h4 className="font-sans font-bold text-lg text-paper mb-2">{edu.degree}</h4>
+                      <p className="font-mono text-sm text-steel-light mb-auto">{edu.institution}</p>
+                      {edu.skills && (
+                        <p className="font-mono text-xs text-steel-light mt-2">Skills: {edu.skills}</p>
+                      )}
+                      <div className="mt-4 pt-4 border-t border-steel font-mono text-sm text-molten">
+                        {edu.startDate} – {edu.endDate}
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </FadeIn>
             </div>
