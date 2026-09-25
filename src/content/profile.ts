@@ -161,9 +161,36 @@ export const profile: ProfileData = {
         impact: 0.7,
         research: 0.95
       },
-      whyIBuiltThis: "[PLACEHOLDER: Waiting for why I built this from user]",
+      whyIBuiltThis: "I wanted to bridge the gap between static environmental dashboards and actionable human safety. While researching urban mobility, I noticed a critical disconnect: we have access to vast amounts of physical sensor data and real-time news advisories, yet navigation apps still route pedestrians through hazardous pollution spikes just to save a few minutes. I built this to prove that by intelligently fusing disparate data streams—unstructured text and tabular sensor metrics—we can create a routing engine that prioritizes public health without sacrificing algorithmic efficiency.",
       decisions: [
-        { title: "[PLACEHOLDER: Decision 1]", reasons: ["[PLACEHOLDER: Reason 1]", "[PLACEHOLDER: Reason 2]"] }
+        { 
+          title: "XGBoost Meta-Learner for Confidence-Weighted Fusion", 
+          reasons: [
+            "Instead of simply concatenating all features into a single black-box model, isolating the text and sensor inputs into separate baselines allowed me to explicitly calculate a \"disagreement score.\"",
+            "XGBoost handles the tabular time-series data and sparse text features exceptionally well, and the lightweight meta-learner adds negligible inference latency (sub-millisecond) to the final prediction pipeline."
+          ] 
+        },
+        { 
+          title: "Dose-Based Routing over Coarse AQI Avoidance", 
+          reasons: [
+            "Simple AQI categories (\"Moderate\", \"Unhealthy\") are too broad to effectively rank tightly clustered urban routes.",
+            "Calculating the exact inhaled dose (Concentration × Time × Elevation-Adjusted Activity Multiplier) allows the algorithm to correctly determine that a fast 10-minute walk through a moderately polluted zone actually results in less exposure than a slow 25-minute walk through a slightly cleaner zone."
+          ] 
+        },
+        { 
+          title: "Google News RSS & TF-IDF Vectorization", 
+          reasons: [
+            "Relying on public RSS feeds for text advisories completely bypasses the strict rate limits, high costs, and API instability associated with scraping social media platforms like X/Twitter.",
+            "TF-IDF provides a fast, lightweight mathematical representation of macro-level city alerts, entirely avoiding the heavy computational overhead required to run dense LLM embeddings during real-time inference."
+          ] 
+        },
+        { 
+          title: "SQLite & FastAPI Backend Architecture", 
+          reasons: [
+            "SQLite provided the perfect lightweight relational structure for executing complex geo-temporal joins (aligning hourly sensor data with irregular text mentions) without the overhead of spinning up a dedicated PostgreSQL cluster.",
+            "FastAPI handles the concurrent asynchronous requests required to fetch and process multiple alternative route geometries from OpenRouteService simultaneously, keeping the map UI highly responsive."
+          ] 
+        }
       ]
     },
     {
@@ -185,9 +212,22 @@ export const profile: ProfileData = {
         impact: 0.8,
         research: 0.5
       },
-      whyIBuiltThis: "[PLACEHOLDER: Waiting for why I built this from user]",
+      whyIBuiltThis: "Most medical AI tools stop at the doctor's desk, leaving patients out of the loop. I built this platform to see if I could bridge that gap by engineering an end-to-end pipeline that serves both sides of the clinic: giving radiologists the visual explainability they require to trust an AI, while giving patients the translation tools they need to actually understand their own health data.",
       decisions: [
-        { title: "[PLACEHOLDER: Decision 1]", reasons: ["[PLACEHOLDER: Reason 1]", "[PLACEHOLDER: Reason 2]"] }
+        { 
+          title: "Utilizing DenseNet121 over a custom-built CNN architecture", 
+          reasons: [
+            "Medical image datasets are often limited. DenseNet121’s architecture encourages heavy feature reuse, making it highly efficient at learning complex textures (like lung opacities) without requiring massive amounts of data or risking severe overfitting.",
+            "It easily integrates with Grad-CAM. In clinical settings, raw accuracy (91%) isn't enough; doctors require visual proof. Extracting the gradients from DenseNet allowed the system to generate heatmaps and bounding boxes, providing the \"why\" behind the diagnosis."
+          ] 
+        },
+        { 
+          title: "Implementing a FAISS-indexed RAG pipeline with MedlinePlus", 
+          reasons: [
+            "Preventing AI hallucinations is critical in healthcare. By using Retrieval-Augmented Generation (RAG) bounded strictly to MedlinePlus, the system guarantees that the plain-language translations provided to patients are based entirely on verified, trusted medical literature.",
+            "FAISS enables lightning-fast vector similarity searches. When Tesseract OCR extracts dense jargon from a clinical report, FAISS ensures the patient interface remains responsive and instantly fetches the correct educational context."
+          ] 
+        }
       ]
     },
     {
@@ -209,9 +249,29 @@ export const profile: ProfileData = {
         impact: 0.9,
         research: 0.3
       },
-      whyIBuiltThis: "[PLACEHOLDER: Waiting for why I built this from user]",
+      whyIBuiltThis: "Current safety infrastructure for remote travel is fundamentally reactive—it relies on a tourist manually calling for help when it might already be too late. I built SafeSphere for the Smart India Hackathon 2025 because I wanted to shift this paradigm from reactive to proactive. By leveraging AI to continuously analyze location data and identify subtle behavioral anomalies, we can alert authorities the moment a traveler deviates into danger, bridging the critical gap between an incident occurring and a response being initiated.",
       decisions: [
-        { title: "[PLACEHOLDER: Decision 1]", reasons: ["[PLACEHOLDER: Reason 1]", "[PLACEHOLDER: Reason 2]"] }
+        { 
+          title: "Developing a Custom Data Simulation Engine", 
+          reasons: [
+            "Because no real-world dataset existed for this highly specific problem, we used OSMnx to programmatically extract actual road networks and topographical data from Sikkim to create a realistic testing environment.",
+            "This engine allowed us to synthetically generate both baseline \"normal\" tourist itineraries with realistic dwell times, and critical anomalies like sudden location drop-offs and deviations into geo-fenced high-risk zones."
+          ] 
+        },
+        { 
+          title: "Pivoting from an LSTM Autoencoder to an XGBoost Classifier", 
+          reasons: [
+            "Initial testing with an unsupervised LSTM Autoencoder revealed it was over-generalizing; it learned to reconstruct even anomalous GPS sequences with minimal error, making it ineffective at flagging subtle dangers.",
+            "Switching to a supervised XGBoost model allowed us to analyze the statistical \"case file\" of the entire journey. By adjusting the scale_pos_weight to handle class imbalance, we achieved a robust 81% accuracy on unseen test data."
+          ] 
+        },
+        { 
+          title: "Utilizing Aggressive Feature Engineering over Raw Time-Series Data", 
+          reasons: [
+            "Feeding raw, sequential GPS coordinates into the model failed to capture the broader behavioral context necessary to accurately detect distress.",
+            "We built a script to transform complex spatial paths into structured statistical summaries—calculating metrics like mean speed, standard deviation of speed, and total duration—which significantly optimized the XGBoost model's predictive capabilities."
+          ] 
+        }
       ]
     }
   ],
