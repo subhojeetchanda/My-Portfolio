@@ -149,7 +149,7 @@ export const profile: ProfileData = {
       title: "Confidence-Weighted Text-Sensor Fusion for Urban Routing",
       problem: "Mainstream navigation systems optimize purely for time and distance, completely ignoring short-horizon environmental hazards like PM2.5 spikes. Furthermore, accurately predicting these localized hazards is difficult because naively combining continuous physical sensor data with irregular text-based news alerts often degrades AI model performance.",
       stack: ["Python", "XGBoost", "FastAPI"],
-      links: { github: "https://github.com/subhojeetchanda/Confidence-Weighted-Text-Sensor-Fusion-for-Urban-Routing", live: "https://confidence-weighted-text-sensor-fusion-for-urban-production.up.railway.app/" },
+      links: { github: "https://github.com/subhojeetchanda/Confidence-Weighted-Text-Sensor-Fusion-for-Urban-Routing", live: "https://urban-routing-aqi.onrender.com/" },
       bulletPoints: [
         "Engineered a confidence-weighted multimodal fusion framework in Python, XGBoost, and FastAPI, upweighting text-based hazard signals (municipal advisories, news) over sensor data in proportion to their disagreement with sensor trends.",
         "Designed a dose-based exposure model (concentration × time × activity-adjusted breathing rate) to rank candidate routes by estimated inhaled PM2.5 exposure instead of coarse AQI category.",
