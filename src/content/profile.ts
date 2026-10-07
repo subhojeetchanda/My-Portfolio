@@ -144,6 +144,43 @@ export const profile: ProfileData = {
   ],
   projects: [
     {
+      id: "mappo-sec",
+      slug: "mappo-sec",
+      title: "MAPPO-Sec: Multi-Agent RL for Resilient LLM Defense (Currently Building)",
+      problem: "As LLM agents are entrusted with autonomous tools, they become vulnerable to indirect prompt injections. Standard defenses fine-tune models on static datasets, leaving them exposed to unseen, zero-day attack techniques. Furthermore, simultaneous single-agent RL for attackers and defenders creates unstable learning environments.",
+      stack: ["PyTorch", "MAPPO", "LoRA", "vLLM", "DeepSpeed", "Qwen-2.5"],
+      links: { github: "https://github.com/subhojeetchanda/RL-for-Self-Improving-Cyber-LLMs" },
+      bulletPoints: [
+        "Building an automated multi-agent RL simulation environment using MAPPO with CTDE (Centralized Training, Decentralized Execution) to pit an Attacker LLM against a Defender LLM.",
+        "Engineering a Centralized Critic that observes the global environment state (including hidden system prompts) to stabilize policy learning and prevent training oscillation.",
+        "Co-training small open-weight models via LoRA in a zero-sum reward structure to achieve zero-day resilience against out-of-distribution prompt injections."
+      ],
+      attributes: {
+        ml: 0.95,
+        fullStack: 0.2,
+        realTime: 0.5,
+        impact: 0.8,
+        research: 0.95
+      },
+      whyIBuiltThis: "Currently building this to explore the frontier of AI safety. Static defenses against prompt injections become obsolete too quickly. By treating prompt injection defense as a two-player zero-sum game, I aim to create an automated curriculum where both the attacker and defender models continuously adapt and improve, resulting in a more resilient LLM agent capable of defending against zero-day attacks.",
+      decisions: [
+        { 
+          title: "Using MAPPO with Centralized Training and Decentralized Execution (CTDE)", 
+          reasons: [
+            "When an Attacker and Defender learn simultaneously using standard single-agent RL (like PPO), the environment becomes unstable because both models constantly shift strategies.",
+            "A Centralized Critic can observe the global state (including hidden system prompts and secret data) during training to stabilize policy learning, while the actors execute locally."
+          ] 
+        },
+        { 
+          title: "Implementing a Zero-Sum Reward Formulation", 
+          reasons: [
+            "A sparse zero-sum reward system (+1 for Attacker if data leaks, -1 if Defender fulfills task safely) forces direct co-evolution between the two models.",
+            "This automated curriculum avoids the need for massive, manually curated static attack datasets which quickly become obsolete."
+          ] 
+        }
+      ]
+    },
+    {
       id: "text-sensor-fusion",
       slug: "text-sensor-fusion",
       title: "Confidence-Weighted Text-Sensor Fusion for Urban Routing",
