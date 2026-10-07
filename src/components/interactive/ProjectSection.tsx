@@ -258,8 +258,8 @@ export default function ProjectSection({ projects }: { projects: Project[] }) {
                     </div>
                     <div>
                       <div className="font-mono text-[10px] text-steel-light mb-1 uppercase">Live Link</div>
-                      <a href={project.links.live !== 'TODO' ? project.links.live : '#'} className="font-mono text-sm text-molten hover:underline truncate block min-h-[44px] flex items-center">
-                        {project.links.live === 'TODO' ? 'TODO' : 'Visit'}
+                      <a href={project.links.live !== 'TODO' && project.links.live !== 'BUILDING' ? project.links.live : '#'} className="font-mono text-sm text-molten hover:underline truncate block min-h-[44px] flex items-center">
+                        {project.links.live === 'TODO' ? 'TODO' : project.links.live === 'BUILDING' ? 'Building' : 'Visit'}
                       </a>
                     </div>
                   </div>

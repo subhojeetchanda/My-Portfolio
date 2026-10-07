@@ -108,8 +108,8 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
               </div>
               <div>
                 <span className="font-mono text-[10px] text-steel-light uppercase block mb-1">Live Deployment</span>
-                <a href={project.links.live !== 'TODO' ? project.links.live : '#'} className="font-mono text-sm text-molten hover:underline truncate block">
-                  {project.links.live === 'TODO' ? 'TODO (Check docs/TODO.md)' : project.links.live}
+                <a href={project.links.live !== 'TODO' && project.links.live !== 'BUILDING' ? project.links.live : '#'} className="font-mono text-sm text-molten hover:underline truncate block">
+                  {project.links.live === 'TODO' ? 'TODO (Check docs/TODO.md)' : project.links.live === 'BUILDING' ? 'Currently Building' : project.links.live}
                 </a>
               </div>
             </div>

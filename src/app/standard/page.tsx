@@ -69,7 +69,9 @@ export default function StandardView() {
                 <h3 className="font-sans font-bold text-lg text-paper print:text-black">{project.title}</h3>
                 <div className="flex gap-4 font-mono text-sm">
                   <a href={project.links.github !== 'TODO' ? project.links.github : '#'} className="text-molten hover:underline print:text-black">GitHub</a>
-                  <a href={project.links.live !== 'TODO' ? project.links.live : '#'} className="text-molten hover:underline print:text-black">Live Link</a>
+                  <a href={project.links.live !== 'TODO' && project.links.live !== 'BUILDING' ? project.links.live : '#'} className="text-molten hover:underline print:text-black">
+                    {project.links.live === 'TODO' ? 'Live Link' : project.links.live === 'BUILDING' ? 'Currently Building' : 'Live Link'}
+                  </a>
                 </div>
               </div>
               <div className="font-mono text-xs text-steel-light print:text-gray-700 mb-4 flex flex-wrap gap-2">

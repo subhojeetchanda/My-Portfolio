@@ -20,7 +20,7 @@ export type Project = {
   title: string;
   problem?: string;
   stack: string[];
-  links: { github: string | 'TODO'; live: string | 'TODO' };
+  links: { github: string | 'TODO'; live: string | 'TODO' | 'BUILDING' };
   bulletPoints: string[];
   attributes: ProjectAttributes;
   slug?: string;
@@ -149,7 +149,7 @@ export const profile: ProfileData = {
       title: "MAPPO-Sec: Multi-Agent RL for Resilient LLM Defense (Currently Building)",
       problem: "As LLM agents are entrusted with autonomous tools, they become vulnerable to indirect prompt injections. Standard defenses fine-tune models on static datasets, leaving them exposed to unseen, zero-day attack techniques. Furthermore, simultaneous single-agent RL for attackers and defenders creates unstable learning environments.",
       stack: ["PyTorch", "MAPPO", "LoRA", "vLLM", "DeepSpeed", "Qwen-2.5"],
-      links: { github: "https://github.com/subhojeetchanda/RL-for-Self-Improving-Cyber-LLMs" },
+      links: { github: "https://github.com/subhojeetchanda/RL-for-Self-Improving-Cyber-LLMs", live: "BUILDING" },
       bulletPoints: [
         "Building an automated multi-agent RL simulation environment using MAPPO with CTDE (Centralized Training, Decentralized Execution) to pit an Attacker LLM against a Defender LLM.",
         "Engineering a Centralized Critic that observes the global environment state (including hidden system prompts) to stabilize policy learning and prevent training oscillation.",
